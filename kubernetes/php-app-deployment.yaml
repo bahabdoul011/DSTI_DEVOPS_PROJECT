@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: php-app
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: php-app
@@ -12,9 +12,11 @@ spec:
       labels:
         app: php-app
     spec:
+      imagePullSecrets:
+        - name: dockerhub-secret
       containers:
         - name: php-app
-          image: dissivouloud/php_app:v1.0 
+          image: dissivouloud/dsti-devops-project:lastest
           ports:
             - containerPort: 80
           volumeMounts:
