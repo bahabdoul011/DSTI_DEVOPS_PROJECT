@@ -1,0 +1,15 @@
+# Ignore node_modules directory (if applicable)
+node_modules
+
+# Ignore any log files
+*.log
+
+# Ignore temporary files or directories (e.g., .git, .env, etc.)
+.git
+.env
+*.swp
+*.bak
+
+# Ignore Docker-related files
+Dockerfile
+docker-compose.yml

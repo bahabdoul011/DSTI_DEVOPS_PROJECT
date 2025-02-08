@@ -12,8 +12,6 @@ services:
       - ./src:/var/www/html
     depends_on:
       - db
-    networks:
-      - app-network
 
   # Service pour la base de données MySQL
   db:
@@ -27,8 +25,6 @@ services:
       MYSQL_PASSWORD: mypassword
     volumes:
       - mysql_data:/var/lib/mysql
-    networks:
-      - app-network
 
   # Service pour phpMyAdmin
   phpmyadmin:
@@ -39,20 +35,10 @@ services:
       - "8081:80"
     environment:
       PMA_HOST: db
-      PMA_USER: root
-      PMA_PASSWORD: rootpassword
       MYSQL_ROOT_PASSWORD: rootpassword
     depends_on:
       - db
-    networks:
-      - app-network
 
-# Définition du réseau
-networks:
-  app-network:
-    driver: bridge
-
-# Volumes pour persister les données MySQL
+# Volumes pour persister les données
 volumes:
   mysql_data:
-    driver: local
