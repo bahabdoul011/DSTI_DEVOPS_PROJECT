@@ -1,0 +1,1989 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Open+Sans&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+  <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-brands/css/uicons-brands.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-bold-straight/css/uicons-bold-straight.css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>PIDC</title>
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    
+    <div class="header-top bg-light">
+        <style>
+            /* Section globale */
+            .site-section {
+                padding: 50px 0;
+                background-color: #f8f9fa; /* Couleur de fond douce */
+            }
+    
+            /* Texte */
+            h2.text-primary {
+                font-size: 36px;
+                font-weight: 700;
+                color: #116530; /* Couleur primaire verte pour le thème agricole */
+            }
+    
+            .text-justify {
+                text-align: justify;
+                font-size: 18px;
+                color: #333;
+            }
+    
+            /* Image */
+            .image-wrapper {
+                position: relative;
+                overflow: hidden;
+                border-radius: 20px; /* Coins arrondis pour l'image */
+                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); /* Ombre élégante */
+            }
+    
+            .image-wrapper img {
+                transition: transform 0.4s ease;
+                width: 100%;
+                height: auto;
+                border-radius: 20px;
+            }
+    
+            .image-wrapper img:hover {
+                transform: scale(1.05); /* Zoom sur l'image au survol */
+            }
+    
+            /* Alignement et responsive */
+            @media (max-width: 991.98px) {
+                .order-lg-2 {
+                    order: 1; /* Image passe en premier sur petits écrans */
+                }
+    
+                .order-lg-1 {
+                    order: 2; /* Texte en dessous de l'image sur mobiles */
+                }
+    
+                h2.text-primary {
+                    font-size: 28px;
+                }
+    
+                .text-justify {
+                    font-size: 16px;
+                }
+            }
+    
+          </style>
+
+        
+        <style>
+            .nav-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+}
+
+.nav-links li {
+    margin-right: 20px; /* Espace entre les liens */
+}
+
+.nav-links .nav-link {
+    text-decoration: none;
+    color: #333; /* Couleur par défaut des liens */
+    padding: 4px 15px;
+    border-radius: 4px; /* Coins arrondis */
+    transition: background-color 0.3s, color 0.3s; /* Transition douce */
+}
+
+.nav-links .nav-link:hover {
+    background-color: #e9ecef; /* Couleur de survol */
+}
+
+.nav-links li.active .nav-link {
+    background-color: #28a745; /* Couleur de fond verte */
+    color: white; /* Texte blanc */
+}
+
+.nav-links li.active .nav-link:hover {
+    background-color: #218838; /* Couleur de survol pour l'élément actif */
+}
+        </style>
+
+        <header class="header">
+            <div class="logo">
+                <img src="images/logo-pidc.jpeg" alt="PIDC Logo" width="100">
+            </div>
+            <div class="search-bar">
+                <select class="category-select" style="height: 40px; ">
+                    <option>Toutes les categories</option>
+                    <option>Maraichage</option>
+                    <option>Arboriculture</option>
+                    <option>Céréalière</option>
+                    <option>Aviculture</option>
+                    <option>Boviculture</option>
+                    <option>Capriculture</option>
+                    <option>Pisciculture</option>
+                    <option>Porciculture</option>
+                </select>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for items...">
+                    <button type="button"><i class="fas fa-search"></i></button>
+                </div>
+            <style>
+               .search-bar {
+    display: flex; /* Utilisation de flexbox pour aligner les éléments horizontalement */
+    align-items: stretch; /* Assure que les éléments ont la même hauteur */
+    gap: 0 !important;
+    padding-left: 10px;
+}
+
+.search-bar input {
+    padding: 10px !important;
+    margin: 0 !important; /* Remet à zéro toute marge */
+    border: 1px solid #ccc; /* Bordure simple */
+    border-radius: 4px 0 0 4px; /* Coins arrondis à gauche */
+    flex-grow: 1; /* L'input prend tout l'espace disponible */
+    box-sizing: border-box; /* Assure que padding et border sont inclus dans la largeur totale */
+    height: 40px; /* Hauteur identique au bouton */
+}
+
+.search-bar button {
+    padding: 0 15px !important; /* Ajuste l'espacement interne */
+    margin: 0 !important; /* Remet à zéro toute marge */
+    border: 1px solid #ccc; /* Bordure identique à l'input */
+    border-left: none; /* Supprime la bordure gauche pour éviter la double bordure */
+    border-radius: 0 4px 4px 0; /* Coins arrondis à droite */
+    background-color: #28a745; /* Couleur du bouton */
+    color: white;
+    cursor: pointer;
+    height: 40px; /* Même hauteur que l'input */
+    display: flex;
+    align-items: center; /* Centre l'icône verticalement */
+    justify-content: center; /* Centre l'icône horizontalement */
+}
+
+.search-bar button i {
+    font-size: 16px;
+}
+
+.search-bar input:focus, .search-bar button:focus {
+    outline: none; /* Supprime la bordure de focus */
+}
+
+
+            </style>                
+            </div>
+            <div class="header-actions">
+                <!-- Sélecteur de langue -->
+                <div class="language-select">
+                    <i class="fas fa-globe"></i>
+                    <select class="language-dropdown">
+                        <option value="fr" selected>Français</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+        
+                <!-- Sélecteur de devise -->
+                <div class="currency-select">
+                    <i class="fas fa-dollar-sign"></i>
+                    <select class="currency-dropdown">
+                        <option value="USD" selected>USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="XOF">XOF</option>
+                    </select>
+                </div>
+        
+                <div class="cart-actions">
+                    <a href="#" style="font-size: 18px;"><i class="far fa-heart"></i> Wishlist <span class="count">3</span></a>
+                    <a href="#" style="font-size: 18px;"><i class="fas fa-shopping-cart"></i> Cart <span class="count">0</span></a>
+                    <a href="#" style="font-size: 18px;"><i class="far fa-user"></i> Account</a>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Navigation Bar -->
+        <nav class="main-nav">
+            <div class="browse-categories">
+                <button id="browse-toggle"><i class="fas fa-bars"></i> Nos produits</button>
+                <div id="categories-dropdown" class="categories hidden">
+                    <ul>
+                        <li><i class="fas fa-seedling"></i> Maraîchage</li>
+                            <li><i class="fas fa-tree"></i> Arboriculture</li>
+                            <li><i class="fas fa-tractor"></i> Céréalière</li>
+                            <li><i class="fas fa-dove"></i> Aviculture</li>
+                            <li><i class="fas fa-horse"></i> Boviculture</li>
+                            <li><i class="fas fa-dog"></i> Capriculture</li>
+                            <li><i class="fas fa-fish"></i> Pisciculture</li>
+                            <li><i class="fas fa-piggy-bank"></i> Porciculture</li>
+
+                    </ul>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="" class="nav-link text-left">Accueil</a>
+                </li>
+                <li><a href="notre-agriculture.html" class="nav-link text-left">Contact</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="tracabilite.html" class="dropdown-item">Traçabilité</a>
+                        <a href="disponibilite.html" class="dropdown-item">Disponibilité</a>
+                        <a href="qualite.html" class="dropdown-item">Qualité</a>
+                        <a href="geolocalisation.html" class="dropdown-item">Géolocalisation</a>
+                        <a href="transaction.html" class="dropdown-item">Transactions</a>
+                        <a href="statistiques.html" class="dropdown-item">Statistiques</a>
+                        <a href="notre-agriculture.html" class="dropdown-item">Annuaire</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">À propos</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="#" class="dropdown-item">Notre histoire</a>
+                        <a href="#" class="dropdown-item">Notre agriculture</a>
+                        <a href="#" class="dropdown-item">Nos partenaires</a>
+                        <a href="#" class="dropdown-item">CRDE</a>
+                        <a href="#" class="dropdown-item">OCPR</a>
+                        <a href="#" class="dropdown-item">DGE</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+<style>
+    /* Général */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-actions .language-select,
+.header-actions .currency-select {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header-actions .language-select select,
+.header-actions .currency-select select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.header-actions a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header-actions a {
+    position: relative;
+}
+
+/* .header-actions a .count {
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 0px;
+    font-size: 12px;
+    position: absolute;
+    top: -12px;
+    right: -12px;
+} */
+
+/* Barre de navigation */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #f8f8f8;
+}
+
+.browse-categories button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.browse-categories button i {
+    font-size: 18px;
+}
+
+.browse-categories .categories {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    z-index: 1000;
+}
+
+.browse-categories .categories ul {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.browse-categories .categories ul li {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.browse-categories .categories ul li:hover {
+    background-color: #f0f0f0;
+}
+
+.browse-categories .nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.browse-categories .nav-links li {
+    list-style: none;
+}
+
+.browse-categories .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* Affichage du sous-menu (Services et À propos) */
+.browse-categories .nav-links .dropdown-menu {
+    display: none;
+}
+
+.browse-categories .nav-links .dropdown-toggle:hover + .dropdown-menu {
+    display: block;
+}
+
+.browse-categories .dropdown-menu a {
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    color: #333;
+    background-color: #fff;
+}
+
+.browse-categories .dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Afficher le menu de catégories */
+.browse-categories .categories.show {
+    display: block;
+}
+
+</style>        
+<style>
+
+.header-actions .language-select,
+.header-actions .currency-select {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .header-actions .language-select select,
+.header-actions .currency-select select {
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+</style>        
+        
+
+      <style>
+      /* Top Bar */
+.top-bar {
+    background-color: #f4f4f4;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #333;
+}
+
+.top-links a {
+    color: #333;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.support {
+    margin-right: 20px;
+}
+
+/* Header Section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    margin-left: 10px;
+    color: #28a745;
+    font-size: 24px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.header-actions .location {
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.header-actions .cart-actions {
+    display: flex;
+}
+
+.cart-actions a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #333;
+    position: relative;
+}
+
+.cart-actions a i {
+    margin-right: 5px;
+}
+
+.cart-actions a .count {
+    background-color: #28a745;
+    color: white;
+    padding: 1px 8px;
+    border-radius: 50%;
+    font-size: 12px;
+    position: absolute;
+    top: -12px;
+    right: -13px;
+}
+
+/* Navigation Bar */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.browse-categories {
+    position: relative;
+}
+
+.browse-categories button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.browse-categories button i {
+    margin-right: 10px;
+}
+
+.categories {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    top: 100%;
+    left: 0;
+    display: none;
+}
+
+.categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.categories li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.categories li i {
+    margin-right: 10px;
+}
+
+.categories li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Main Content Section */
+.main-content {
+    padding: 50px;
+    text-align: center;
+}
+
+.main-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
+}
+
+/* Show Class */
+.show {
+    display: block;
+}
+      </style>
+
+      </div>
+      <style>
+        /* Styling for Categories Menu */
+.categories-menu-wrapper {
+  width: 250px;
+  margin-right: 30px; /* Space between categories and main navigation */
+  position: relative;
+}
+
+.categories-menu .categories-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.categories-title a {
+  font-weight: bold;
+  font-size: 18px;
+  color: #28a745;
+  text-transform: uppercase;
+  display: block;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.category-item {
+  margin-bottom: 5px;
+}
+
+.category-link {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+  padding: 12px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.category-link:hover {
+  background-color: #e9ecef;
+}
+
+/* Hidden by default */
+.hidden {
+  display: none;
+}
+
+/* Transition effect */
+.categories-items {
+  transition: max-height 0.3s ease-out;
+  overflow: hidden;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .categories-menu-wrapper {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .categories-list {
+    text-align: left;
+  }
+}
+
+
+      </style>
+      <style>
+       
+        .hero-slide .owl-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Class that triggers the animation */
+/* .slide-in-left {
+    animation: slideInLeft 1s ease-out forwards;
+} */
+    </style>
+     
+      <div class="hero-slide owl-carousel site-blocks-cover">
+        <div class="intro-section" style="background-image: url('images/agriculture.png');">
+        <div class="container1">
+            <div class="row align-items-center" style="text-align: left;float: left;padding-left: 10px !important;margin-left: 10px !important;">
+                <div class="col-lg-12 justify-content-center mx-auto" style="text-align: left;padding-left: 10px !important;margin-left: 10px !important;padding-top:250px;">
+                    <h1 class="text-animated" style="font-size: 75px;font-weight: 900;">
+                        Bienvenu sur PIDC
+                    </h1>
+                    <h1 class="text-animated" style="font-size: 30px;font-weight: 900;" >
+                       La Plateforme Intégrée  de Développement des Chaines <br>des valeurs agricoles et de compétitivité des Comores
+                  </h1>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+      
+
+
+      </div>
+
+      <style>
+        /* Categories Section */
+.categories2 {
+    background-color: #fff;
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.categories2 p {
+    color: rgb(47, 46, 46);
+    font-size: 15px;
+    line-height: 1.6; /* Ajout pour améliorer la lisibilité */
+    transform: skewX(-5deg);
+}
+.categories-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.category {
+    text-align: center;
+}
+
+.category img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.category p {
+    font-size: 1.1rem;
+    color: #333;
+}
+      </style>
+       <!-- Categories Section -->
+  
+      <!-- END slider -->
+      <style>
+        /* Par défaut pour les écrans plus grands */
+        .boutique_lien {
+            margin-left: 200px;
+        }
+
+        /* Pour les écrans avec une largeur maximale de 768px (par exemple, tablettes et mobiles) */
+        @media (max-width: 768px) {
+            .boutique_lien {
+                margin-left: 10px; /* Ajustez cette valeur en fonction de vos besoins */
+            }
+            .boutique{
+              background-color: #026900 !important;
+              text-align: center !important;
+            }
+
+            .boutique:hover{
+              color: white !important;
+              background-color: black !important;
+            }
+        }
+
+        /* Pour les écrans encore plus petits (par exemple, smartphones) */
+        @media (max-width: 480px) {
+            .boutique_lien {
+                margin-left: 5px; /* Ajustez cette valeur en fonction de vos besoins */
+            }
+            .boutique{
+              background-color: #026900 !important;
+              text-align: center !important;
+            }
+
+            .boutique:hover{
+            color: white !important;
+            background-color: black !important;
+          }
+        }
+
+        .boutique:hover{
+          color: white !important;
+          background-color: black !important;
+        }
+
+        .boutique1:hover{
+          color: #116530 !important;
+          background-color: white !important;
+        }
+        .contactez-nous:hover{
+          color: #116530 !important;
+          background-color: white !important;
+        }
+
+        .service-1{
+          padding-right: 10px; margin-right: 10px;
+          padding-bottom: 10px; margin-bottom: 10px;
+          padding-top: 10px; margin-top: 10px;
+          padding-left: 10px; margin-left: 10px;
+          /* border: 1px solid gray !important; */
+          box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px !important;     
+          border-radius: 15px;                          
+        }
+
+        .block-2 {
+          background: #f4fff4;
+          color: black;
+          padding: 4rem 0;
+          padding-bottom: 1rem !important;
+        }
+      </style>
+
+      <style>
+        .service-1 {
+          position: relative;
+          background-color: transparent;
+          transition: background-color 0.3s ease;
+        }
+
+        .service-1:hover  {
+          background-color: rgb(2, 105, 0);
+          color: rgb(231, 224, 224);
+        }
+
+        /* .service-1 p:hover  {
+          color: #f4fff4;
+          
+        } */
+        
+        .nos_services .service-1:hover .service-heading {
+            color: white !important; /* Couleur du texte du titre lors du survol */
+          }
+
+          .nos_services .service-1:hover .img-fluid {
+          color: white !important; /* Couleur du texte du titre lors du survol */
+          border: 2px solid white;
+        }
+        .nos_services .img-fluid{
+          font-size: 30px;color:#026900;
+          border-radius: 50%;
+          border: 2px solid #026900;
+          padding-left: 8px;
+          padding-right: 8px;
+          padding-top: 5px;
+        }
+
+        .service-1:active {
+          background-color: rgb(2, 105, 0);
+        }
+      </style>
+
+
+<style>
+  /* Assurer que .row utilise Flexbox */
+.row.no-gutters {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne si nécessaire */
+}
+
+/* Assurer que chaque colonne a la même hauteur */
+.col-lg-4,
+.col-md-6 {
+  display: flex;
+  flex-direction: column; /* Permet aux éléments à l'intérieur de la colonne de s'étendre */
+}
+
+/* Assurer que le contenu des blocs occupe toute la hauteur disponible */
+.service-1 {
+  flex: 1; /* Permet au bloc de remplir l'espace disponible */
+  display: flex;
+  flex-direction: column; /* Permet au contenu de s'étendre verticalement */
+  justify-content: center; /* Centre le contenu verticalement */
+  padding: 15px; /* Assure un peu de padding pour le contenu */
+  transition: background-color 0.3s ease;
+}
+
+.service-1-icon {
+  margin-bottom: 15px; /* Espace entre l'icône et le contenu */
+}
+
+.service-1-content {
+  flex: 1; /* Permet au contenu de s'étendre et remplir l'espace */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centre le texte verticalement dans le bloc */
+}
+
+.li {
+  color: #0e0319;
+  font-weight: 900; /* Makes the text very bold */
+}
+
+.big-quote {
+  font-size: 15px; /* Makes the text large */
+  color: #333; /* Dark gray color for the text */
+  border-left: 4px solid #026900; /* Blue border on the left side */
+  padding-left: 20px; /* Adds space between the border and text */
+  margin: 20px; /* Adds space around the blockquote */
+  background-color: #f4fff4; /* White background for better readability */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  position: relative;
+}
+
+.big-quote p {
+  margin: 0;
+  padding: 5px;
+}
+.big-quoter::before {
+    content: "“";
+    font-size: 4em;
+    color: #026900;
+    position: absolute;
+}
+
+.block-3 {
+    background: #09162a;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+.custom-input {
+    background-color: #234b22;
+    border-radius: 25px;
+    border: 1px solid #234b22;
+    color: white !important;
+    height: 3rem;
+}
+.custom-input::placeholder {
+    color: white !important; /* Change this to your desired placeholder color */
+    opacity: 1 !important; /* Ensures full opacity for the placeholder text */
+}
+
+.nos_services3 .container .row {
+    /* display: -webkit-box; */
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-wrap: wrap !important;
+    /* flex-wrap: wrap; */
+    margin-right: -15px !important;
+    margin-left: -100px !important;
+}
+  
+</style>
+
+<section class="categories2" data-aos="fade-up" style="background-color: #f4fff4;">
+    <div class="container categories-container">
+        <div class="category">
+          <i class="fi fi-rr-marketplace img-fluid" style="font-size: 40px;color: #026900;"></i>
+            <p>Agriculture intelligente</p>
+        </div>
+        <div class="category">
+          <i class="fi fi-rr-map-location-track img-fluid" style="font-size: 40px;color: #026900;"></i>
+          <p>Compétitivité des filières</p>
+        </div>
+        <div class="category">
+          <i class="fi fi-rr-cart-shopping-fast img-fluid" style="font-size: 40px;color: #026900;"></i>
+          <p>Inclusion des chaines de valeur</p>
+        </div>
+        <div class="category">
+          <i class="fi fi-rr-truck-box img-fluid" style="font-size: 40px;color: #026900;"></i>
+          <p>Diversification des exportations</p>
+        </div>
+        <div class="category">
+          <i class="fi fi-rr-invite img-fluid" style="font-size: 40px;color: #026900;"></i>
+          <p>Sécurité alimentaire</p>
+        </div>
+        <div class="category">
+          <i class="fi fi-sr-chart-user img-fluid" style="font-size: 40px;color: #026900;"></i>
+          <p>Industrie agroalimentaire</p>
+        </div>
+        <div class="category">
+          <i class="fi fi-rr-stats img-fluid" style="font-size: 40px;color: #026900;"></i>
+          <p>Rélsilience des emplois</p>
+        </div>
+
+        <div class="category">
+          <i class="fi fi-rr-thunderstorm-moon img-fluid" style="font-size: 40px;color: #026900;"></i>
+          <p>Politique agricole</p>
+        </div>
+
+        <div class="category">
+          <i class="fi fi-rr-user-unlock img-fluid" style="font-size: 40px;color: #026900;"></i>
+          <p>Agrotransformation</p>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <h2>Comment ça marche ?</h2>
+    <div class="steps-container">
+        <div class="step">
+            <div class="icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Créer votre compte <br> et ajoutez <br> votre adresse</h3>
+            <!-- <p>United States Area</p> -->
+        </div>
+        <div class="arrow">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="step">
+            <div class="icon">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h3>Selectionnez le produit que vous voulez achetez</h3>
+            <!-- <p>Always fresh!</p> -->
+        </div>
+        <div class="arrow">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="step">
+            <div class="icon">
+                <i class="fas fa-truck"></i>
+            </div>
+            <h3>Nous livrerons vos <br> achats à votre <br> porte</h3>
+            <!-- <p>Free delivery up to 50KM</p> -->
+        </div>
+    </div>
+</section>
+<style>
+    /* Section générale */
+    .how-it-works {
+        text-align: center;
+        padding: 60px 20px;
+        background-color: #f2f2f2; /* Couleur de fond plus douce */
+        font-family: 'Arial', sans-serif;
+    }
+    
+    .how-it-works h2 {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #333; /* Titre plus sombre pour plus de contraste */
+        font-weight: bold;
+    }
+    
+    /* Conteneur des étapes */
+    .how-it-works .steps-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap; /* Permet aux éléments de s'ajuster pour les petits écrans */
+        position: relative; /* Nécessaire pour les traits de connexion */
+    }
+    
+    .how-it-works .step {
+        background-color: #ffffff;
+        width: 220px;  /* Largeur du cercle augmentée */
+        height: 220px; /* Hauteur du cercle augmentée */
+        margin: 0 15px;
+        border-radius: 50%; /* Rend les blocs circulaires */
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.4s, box-shadow 0.4s;
+        position: relative;
+        z-index: 1; /* Assure que les étapes sont au-dessus des traits */
+        display: flex; /* Centrer le contenu à l'intérieur du cercle */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .how-it-works .step:hover {
+        transform: translateY(-12px); /* Soulèvement plus prononcé au hover */
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Icônes des étapes */
+    .how-it-works .icon {
+        font-size: 3.5rem; /* Taille ajustée pour s'adapter au cercle */
+        color: #00a650; /* Couleur des icônes */
+        margin-bottom: 10px;
+    }
+    
+    .how-it-works h3 {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 5px;
+        font-weight: bold;
+        text-align: center; /* Centrer le texte dans le cercle */
+    }
+    
+    .how-it-works p {
+        font-size: 0.85rem;
+        color: #777;
+        text-align: center; /* Centrer le texte dans le cercle */
+    }
+    
+    /* Lignes de connexion entre les blocs avec flèches */
+    .how-it-works .steps-container::before, 
+    .how-it-works .steps-container::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 30%;
+        height: 4px;
+        background-color: #00a650; /* Couleur du trait */
+        z-index: 0;
+    }
+    
+    /* Ajout de flèches aux traits */
+    .how-it-works .steps-container .arrow-connector {
+        position: absolute;
+        top: 50%;
+        display: block;
+        width: 30%;
+        height: 4px;
+        background-color: #00a650;
+        z-index: 0;
+    }
+    
+    .how-it-works .steps-container .arrow-connector::after {
+        content: '\2192'; /* Code Unicode de la flèche droite */
+        font-size: 2rem;
+        color: #00a650;
+        position: absolute;
+        top: -12px;
+        right: -20px; /* Ajuster selon la position de la flèche */
+    }
+    
+    /* Lignes avant et après entre les étapes */
+    .how-it-works .steps-container::before {
+        left: 16.5%; /* Ajuster pour commencer après le premier bloc */
+    }
+    
+    .how-it-works .steps-container::after {
+        right: 16.5%; /* Ajuster pour finir avant le dernier bloc */
+    }
+    
+    /* Adaptation responsive */
+    @media screen and (max-width: 1024px) {
+        .how-it-works .steps-container {
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .how-it-works .step {
+            margin-bottom: 30px;
+        }
+    
+        /* Masquer les lignes sur mobile */
+        .how-it-works .steps-container::before, 
+        .how-it-works .steps-container::after {
+            display: none;
+        }
+    
+        .how-it-works .arrow {
+            display: none;
+        }
+    }
+    </style>
+    
+    
+
+      
+      
+      <!-- END services -->
+      
+
+      <!-- <div class="site-section pb-0" >
+        <div class="block-2" style="height: 500px !important;">
+          <div class="container">
+            <div class="row">
+              
+              <div class="col-lg-12 ml-auto">
+                <h2 class="section-title mb-4 text-center" style="color: black;font-weight: 900;">Nos partenaires</h2>
+
+                <div class="row my-5">
+                  <div class="projects-carousel-wrap" style="background-color: #f4fff4">
+                    <div class="owl-carousel owl-slide-4" style="background-color: #f4fff4">
+                      <div class="project-item1">
+                        
+                        <img style="border-radius: 20px;" src="images/partenaire.png" alt="Image" class="img-fluid">
+                      </div>
+                      <div class="project-item1">
+                        
+                        <img style="border-radius: 20px;" src="images/partenaire0.png" alt="Image" class="img-fluid">
+                      </div>
+                      <div class="project-item1">
+                        
+                        <img style="border-radius: 20px;" src="images/partenaire-logo (3).png" alt="Image" class="img-fluid">
+                      </div>
+                      
+          
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- END block-2 -->
+
+
+      <section class="gofarm-section" style="display: none;">
+        <div class="gofarm-content">
+            <h1>G<span class="leaf">O</span>FARM</h1>
+            <p class="subtitle">UX focused theme for grocery business!</p>
+            <p class="description">Best UX & UI standards!</p>
+            <div class="buttons">
+                <a href="#" class="btn demos">See live demos</a>
+                <a href="#" class="btn buy">Buy theme</a>
+            </div>
+        </div>
+        <div class="gofarm-images">
+            <img src="image1.jpg" alt="Gofarm Demo 1" class="image">
+            <img src="image2.jpg" alt="Gofarm Demo 2" class="image">
+            <img src="image3.jpg" alt="Gofarm Demo 3" class="image">
+            <img src="image4.jpg" alt="Gofarm Demo 4" class="image">
+        </div>
+    </section>
+
+    <section class="product-categories">
+        <h2>Nos Catégories de Produits</h2>
+        <div class="category-container">
+            <div class="category">
+                <img src="vegetables.png" alt="Maraichage">
+                <h3>Maraichage</h3>
+                <p>125+ Products</p>
+            </div>
+            <div class="category">
+                <img src="fish_meats.png" alt="Arboriculture">
+                <h3>Arboriculture</h3>
+                <p>125+ Products</p>
+            </div>
+            <div class="category">
+                <img src="desserts.png" alt="Cérélière">
+                <h3>Cérélière</h3>
+                <p>125+ Products</p>
+            </div>
+            <div class="category">
+                <img src="drinks_juice.png" alt="Aviculture">
+                <h3>Aviculture</h3>
+                <p>125+ Products</p>
+            </div>
+            <div class="category">
+                <img src="animals_food.png" alt="Boviculture">
+                <h3>Boviculture</h3>
+                <p>125+ Products</p>
+            </div>
+            <div class="category">
+                <img src="fresh_fruits.png" alt="Capriculture">
+                <h3>Capriculture</h3>
+                <p>125+ Products</p>
+            </div>
+
+            <div class="category">
+                <img src="animals_food.png" alt="Pisciculture">
+                <h3>Pisciculture</h3>
+                <p>125+ Products</p>
+            </div>
+            <div class="category">
+                <img src="fresh_fruits.png" alt="Porciculture">
+                <h3>Porciculture</h3>
+                <p>125+ Products</p>
+            </div>
+        </div>
+        <div class="navigation">
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+        </div>
+    </section>
+    <style>
+        /* Section des catégories de produits */
+.product-categories {
+    padding: 40px 20px;
+    background-color: #f9f9f9; /* Couleur de fond */
+    text-align: center;
+}
+
+/* Titre de section */
+.product-categories h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Conteneur des catégories */
+.product-categories .category-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+    gap: 20px; /* Espacement entre les catégories */
+    justify-items: center; /* Centrer les catégories */
+}
+
+/* Catégorie individuelle */
+.product-categories .category {
+    padding: 20px;
+    border-radius: 50%; /* Forme ronde */
+    background-color: #e0f7f5; /* Fond vert clair */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Transition pour l'animation */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Images de catégorie */
+.product-categories .category img {
+    width: 80px; /* Largeur d'image */
+    height: 80px; /* Hauteur d'image */
+}
+
+/* Titres des catégories */
+.product-categories .category h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #333; /* Couleur sombre */
+}
+
+/* Compteur de produits */
+.product-categories .category p {
+    color: #777; /* Couleur grise */
+}
+
+/* Animation sur hover */
+.product-categories .category:hover {
+    transform: scale(1.1); /* Effet de zoom */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+}
+
+/* Navigation */
+.product-categories .navigation {
+    margin-top: 20px;
+}
+
+/* Boutons de navigation */
+.product-categories button {
+    background-color: #00a650; /* Couleur verte */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 0 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Effet de hover sur les boutons */
+.product-categories button:hover {
+    background-color: #008f3f; /* Couleur plus sombre au survol */
+    transform: scale(1.1); /* Effet de zoom sur les boutons */
+}
+
+/* Styles de média pour ajuster le nombre de colonnes sur les petits écrans */
+@media (max-width: 1200px) {
+    .product-categories .category-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+    }
+}
+
+@media (max-width: 800px) {
+    .product-categories .category-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+    }
+}
+
+@media (max-width: 500px) {
+    .product-categories .category-container {
+        grid-template-columns: 1fr; /* 1 colonne */
+    }
+}
+    </style>    
+    <style>
+
+/* Section de Gofarm */
+.gofarm-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #ffffff; /* Couleur de fond blanche */
+}
+
+/* Contenu principal */
+.gofarm-content {
+    max-width: 500px;
+}
+
+/* Titre principal */
+.gofarm-content h1 {
+    font-size: 3rem;
+    color: #00a650; /* Couleur verte */
+    margin: 0;
+    animation: fadeIn 1s ease-in-out; /* Animation d'apparition */
+}
+
+/* Feuille pour le "O" */
+.gofarm-section .leaf {
+    color: #ffa500; /* Couleur orange pour la feuille */
+}
+
+/* Sous-titre */
+.gofarm-section .subtitle {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: #333; /* Couleur sombre */
+}
+
+/* Description */
+.gofarm-section .description {
+    font-size: 1rem;
+    color: #777; /* Couleur grise */
+}
+
+/* Boutons */
+.gofarm-section .buttons {
+    margin-top: 30px;
+}
+
+.gofarm-section .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-right: 15px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.gofarm-section .demos {
+    background-color: #ffa500; /* Couleur orange */
+}
+
+.gofarm-section .buy {
+    background-color: #00a650; /* Couleur verte */
+}
+
+.gofarm-section .btn:hover {
+    opacity: 0.8; /* Légère diminution de l'opacité au survol */
+}
+
+/* Conteneur des images */
+.gofarm-section .gofarm-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 600px;
+}
+
+/* Images */
+.gofarm-section .image {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+    border-radius: 10px; /* Coins arrondis pour les images */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-in-out; /* Animation d'apparition */
+}
+
+/* Animation fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation slideIn */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+    </style>    
+
+
+
+      <div class="site-section pb-0" data-aos="fade-up">
+        <div class="block-2">
+          <div class="container">
+            <div class="row">
+              
+              <div class="col-lg-12 ml-auto">
+                <!-- <h3 class="section-subtitle text-black opacity-50">Why Choose Us</h3> -->
+                <h2 class="section-title mb-4 text-center" style="color: black;font-weight: 900;">Nos partenaires</h2>
+
+                <div class="row my-5" style="padding-left: 40px;padding-right: 40px;">
+                  <div class="col-lg-2">
+
+                  </div>
+                  <div class="col-lg-2 d-flex align-items-start mb-4">
+                    <img src="images/1-partenaire.png"  alt="Image" class="img-fluid">
+                    
+                  </div>
+                  <div class="col-lg-2 d-flex align-items-start mb-4">
+                    <img src="images/2-partenaire.png"  alt="Image"  class="img-fluid">
+                    
+                  </div>
+
+                  <div class="col-lg-2 d-flex align-items-start mb-4">
+                    <img src="images/3-partenaire.png" alt="Image" class="img-fluid">
+                    
+                  </div>
+
+                  <div class="col-lg-2 d-flex align-items-start mb-4">
+                    <img src="images/4-partenaire.png" alt="Image" class="img-fluid">
+                    
+                  </div>
+
+                  <div class="col-lg-2">
+
+                  </div>
+
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>
+        /* Styles généraux pour les boutons */
+.btn {
+    display: inline-block;
+    padding: 10px 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-right: 15px;
+}
+
+/* App Store button */
+.app-store {
+    background-color: #116530; /* Couleur verte */
+}
+
+.app-store:hover {
+    background-color: #0e4a2c; /* Couleur plus foncée au survol */
+    transform: translateY(-3px); /* Légère élévation au survol */
+}
+
+/* Google Play button */
+.google-play {
+    background-color: black; /* Couleur noire */
+}
+
+.google-play:hover {
+    background-color: #333333; /* Couleur plus claire au survol */
+    transform: translateY(-3px); /* Légère élévation au survol */
+}
+
+/* Style pour le texte en petite taille */
+.small-text {
+    text-transform: lowercase;
+    font-size: 13px;
+    margin-right: 2px;
+    font-weight: normal;
+}
+
+/* Ajout d'une ombre pour un effet plus élégant */
+.btn {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+      </style>
+      <div class="site-section">
+        <div class="container">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+              
+                
+                <img src="images/plateforme.png" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-lg-5 order-lg-1">
+              <h2 class="text-primary mb-4 text-center">Découvrez notre application mobile !</h2>
+              <p class="mb-4" style="text-align: justify;">  Disponible dès maintenant sur l'App Store et Google Play, notre application transforme vos achats en une expérience simple, rapide et intuitive. Où que vous soyez, accédez à notre marketplace en quelques clics, parcourez nos produits et effectuez vos commandes en toute simplicité. Téléchargez-la dès aujourd'hui et profitez d'une navigation optimisée pour rendre vos achats encore plus agréables et pratiques. </p>
+             
+              <p><a href="#" class="btn app-store">
+                <span class="small-text">Disponible dans</span> l'App Store
+            </a>
+            
+            <a href="#" class="btn google-play">
+                <span class="small-text">Disponible sur</span> Google Play
+            </a>
+            </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="counter-section" data-aos="fade-up" style="display: none;">
+        <div class="counter-container">
+            <div class="counter-item">
+              <i class="fi fi-rr-users-alt" style="font-size: 35px;"></i>
+                <h3><span class="counter" data-target="182">0</span>+</h3>
+                <p>Expert Team Member</p>
+            </div>
+            <div class="counter-item">
+              <i class="fi fi-rr-users-alt" style="font-size: 35px;"></i>
+                <h3><span class="counter" data-target="569">0</span></h3>
+                <p>Expert Team Member</p>
+            </div>
+            <div class="counter-item">
+              <i class="fi fi-rr-users-alt" style="font-size: 35px;"></i>
+                <h3><span class="counter" data-target="880">0</span></h3>
+                <p>Expert Team Member</p>
+            </div>
+            <div class="counter-item">
+              <i class="fi fi-rr-users-alt" style="font-size: 35px;"></i>
+                <h3><span class="counter" data-target="25">0</span></h3>
+                <p>Expert Team Member</p>
+            </div>
+        </div>
+    </div>
+    <style>
+      /* Section globale */
+.counter-section {
+    background-color: #234b22;
+    padding: 50px 0;
+}
+
+.counter-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.counter-item {
+    text-align: center;
+    color: white;
+    margin: 20px;
+}
+
+.counter-item img {
+    width: 50px;
+    margin-bottom: 15px;
+}
+
+.counter-item h3 {
+    font-size: 36px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.counter-item p {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+/* Effet de transition pour les chiffres */
+.counter {
+    font-size: 36px;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+
+    </style>    
+
+     
+
+      <div class="site-section block-3" style="display: none;background-color: white;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="mb-5" data-aos="fade-up">
+                <h3 class="section-subtitle text-green opacity-50">Témoignages de nos utilisateurs </h3>
+                <h2 class="section-title mb-4"><strong class="text-black" style="font-weight: 900;">Mot de louange à propos de la présence.</strong></h2>
+                <p>Votre dévouement à mettre les clients en premier est évident dans chaque aspect de votre présence en ligne. De votre site web convivial.</p>
+                <blockquote class="big-quote">
+                  <p><i>Un bon témoignage peut améliorer l'image de votre marque. Cliquez pour modifier et ajouter le vôtre.</i></p>
+                </blockquote>
+              </div>
+            </div>
+
+            <div class="col-md-7" data-aos="fade-up">
+              <div class="projects-carousel-wrap">
+                <div class="owl-carousel owl-slide-3">
+                  <div class="project-item">
+                    <div class="project-item-contents">
+                      <a href="#">
+                        <span class="project-item-category">We do</span>
+                        <h2 class="project-item-title">
+                          Planting
+                        </h2>
+                      </a>
+                    </div>
+                    <img style="border-radius: 20px;" src="images/vendre_acheter.jpeg" alt="Image" class="img-fluid">
+                  </div>
+                  <div class="project-item">
+                    <div class="project-item-contents">
+                      <a href="#">
+                        <span class="project-item-category">We do</span>
+                        <h2 class="project-item-title">
+                          Mulching
+                        </h2>
+                      </a>
+                    </div>
+                    <img style="border-radius: 20px;" src="images/vendre_acheter.jpeg" alt="Image" class="img-fluid">
+                  </div>
+                  <div class="project-item">
+                    <div class="project-item-contents">
+                      <a href="#">
+                        <span class="project-item-category">We do</span>
+                        <h2 class="project-item-title">
+                          Watering
+                        </h2>
+                      </a>
+                    </div>
+                    <img style="border-radius: 20px;" src="images/vendre_acheter.jpeg" alt="Image" class="img-fluid">
+                  </div>
+                  <div class="project-item">
+                    <div class="project-item-contents">
+                      <a href="#">
+                        <span class="project-item-category">We do</span>
+                        <h2 class="project-item-title">
+                          Fertilizing
+                        </h2>
+                      </a>
+                    </div>
+                    <img style="border-radius: 20px;" src="images/vendre_acheter.jpeg" alt="Image" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+         
+
+        </div>
+      </div>
+
+
+
+      <!-- <div class="py-5 bg-primary block-4">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <h3 class="text-white">Subscribe To Newsletter</h3>
+              <p class="opacity-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, reprehenderit!</p>
+            </div>
+            <div class="col-lg-6">
+              <form action="#" class="form-subscribe d-flex align-items-stretch">
+                <input type="email" class="form-control h-100" placeholder="Enter your e-mail">
+                <input type="submit" class="btn btn-secondary px-4" value="Subcribe">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="footer" style="background-color: rgb(14, 31, 13);padding-bottom: 1rem !important;" data-aos="fade-up">
+        <div class="container">
+          <div class="row mb-4">
+            <div class="col-lg-6">
+              <p class="mb-4"><img src="images/logo-pidc.png" alt="Image" class="img-fluid"></p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Beatae nemo minima qui dolor, iusto iure.</p>  
+              <!-- <p><a href="#">Learn More</a></p> -->
+            </div>
+            <div class="col-lg-2">
+              <h3 class="footer-heading"><span>Menu</span></h3>
+              <ul class="list-unstyled">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="histoire.html">Notre Histoire</a></li>
+                <li><a href="#">Actualité</a></li>
+                <li><a href="notre-agriculture.html">Notre agriculture</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-4">
+              <div style="padding: 25px;background-color: #152f14;border-radius: 15px;">
+                <h2 style="text-align: center;">Abonnez-vous aujourd'hui</h2>
+                <!-- <br> -->
+                <p>Abonnez-vous pour recevoir des mises à jour, des nouvelles et des conseils dans votre boîte de réception.</p>
+                <!-- <br> -->
+                <!-- <div>
+                  <input type="text" placeholder="Email Adresse ..."  class="form-control custom-input" >
+                </div> -->
+                <form action="#" class="form-subscribe d-flex align-items-stretch">
+                  <input type="email" class="form-control h-9 custom-input" style="border-bottom-right-radius: 0 !important;border-top-right-radius: 0 !important;background-color: #234b22;border: #234b22;height: 50px;border-top-left-radius: 25px;border-bottom-left-radius: 25px;" placeholder="Email Adresse ...">
+                  <!-- <input type="submit" class="btn px-1" style="border-bottom-left-radius: 0 !important;border-top-left-radius: 0 !important; background-color: #026900;border: #026900;height: 40px; " value="Send"> -->
+                  
+                  <a type="submit" class="btn" style="padding-top: 17px !important;border-bottom-left-radius: 0 !important;border-top-left-radius: 0 !important; background-color: #234b22;border: #234b22;height: 50px;border-top-right-radius: 25px;border-bottom-right-radius: 25px; "><i class="fi fi-bs-paper-plane img-fluid"></i></a>
+                </form>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="copyright border-top pt-4">
+                <div style="float: left;">
+                  <p style="margin-bottom: 5px;"> Conditions d'utilisation |  Tous droits réservés. Copyright &copy;<script>document.write(new Date().getFullYear());</script>.
+                  </p>
+                </div>
+                <div style="float: right;">
+                  <a style="text-decoration: none;"  href="https://www.facebook.com/lepidcenmarche">
+                    <i class="fi fi-brands-facebook" style="color: #3b5998;font-size: 30px;margin-right: 10px;"></i>
+                  </a>
+                  <i class="fi fi-brands-instagram" style="color: white;font-size: 30px;margin-right: 10px;"></i>
+                  <i class="fi fi-brands-twitter" style="color: #55acee;font-size: 30px;margin-right: 10px;"></i>
+                  <i class="fi fi-brands-youtube" style="color: #c4302b;font-size: 30px;"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <!-- .site-wrap -->
+
+
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#116530"/></svg></div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+
+
+
+
+    <script src="js/main.js"></script>
+    <script>
+
+document.getElementById('browse-toggle').addEventListener('click', function() {
+    const dropdown = document.getElementById('categories-dropdown');
+    dropdown.classList.toggle('show');
+});
+
+
+
+     document.getElementById('browse-toggle').addEventListener('click', function() {
+    const categoriesDropdown = document.getElementById('categories-dropdown');
+    categoriesDropdown.classList.toggle('hidden');
+});
+
+document.getElementById('browse-toggle').addEventListener('blur', function() {
+    const categoriesDropdown = document.getElementById('categories-dropdown');
+    categoriesDropdown.classList.add('hidden');
+});
+
+
+
+
+      // Fonction pour faire l'animation de comptage
+document.addEventListener("DOMContentLoaded", function() {
+    const counters = document.querySelectorAll(".counter");
+    const speed = 200; // vitesse de comptage
+
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+
+            const increment = target / speed;
+
+            if(count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(updateCount, 20);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        updateCount();
+    });
+});
+
+    </script>
+
+    
+  </body>
+
+  </html>

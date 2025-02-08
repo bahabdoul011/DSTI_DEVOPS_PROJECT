@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+}
+
+header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: #0fb043;
+    font-size: 28px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-bar input {
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+
+.search-bar button {
+    background-color: #0fb043;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+}
+
+.account-info a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Banner Section */
+.banner {
+    background-color: #f0f8f4;
+    padding: 60px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.banner-text h2 {
+    font-size: 40px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.banner-subtext p {
+    color: #777;
+    margin-top: 10px;
+}
+
+/* Categories Section */
+.categories ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: white;
+    max-width: 1200px;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.categories ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.categories ul li img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.categories ul li p {
+    font-size: 16px;
+    color: #333;
+}
+
+/* How it works section */
+.how-it-works {
+    text-align: center;
+    padding: 40px 0;
+    background-color: #ffffff;
+}
+
+.how-it-works h3 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.step img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 16px;
+    color: #333;
+}
