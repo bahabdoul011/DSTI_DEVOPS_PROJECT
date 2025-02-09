@@ -185,6 +185,14 @@ This project demonstrates a modern DevOps pipeline from development to deploymen
 
 ---
 
+### **Here is the screenshot of the app running locally**
+![alt text](screencapture-localhost-8080-2025-02-09-18_38_47.png)
+
+  
+![The Login page](image-10.png)
+
+![alt text](screencapture-localhost-8080-Admin-Ingenieurs-2025-02-09-18_40_10.png)
+
 ### **Additional Notes**:
 - **Database and Migrations**: Handled automatically through Docker Compose and Kubernetes on deployment.
 - **Testing**: Continuous testing with GitLab CI ensures that the app remains stable and functional with each change.
