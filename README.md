@@ -1,64 +1,66 @@
-
 # DevOps Project: Engineer Registration Web Application
 
-## **Introduction**
+##  **Introduction**
 
-This project focuses on building a web application for engineers to register for IT engineering projects. The primary goal is to combine efficient software engineering practices with robust DevOps methodologies. The project emphasizes a DevOps lifecycle with a focus on Continuous Integration (CI), Continuous Delivery/Deployment (CD), Infrastructure as Code (IaC), container orchestration, and monitoring.
+This project is designed to create a web application for engineers to register for IT engineering projects, showcasing the integration of DevOps methodologies with application development. The primary focus is on building the app with automation, scalability, and reliability, using tools and practices such as CI/CD, Docker, Kubernetes, and monitoring.
 
 - **Backend**: PHP
 - **Frontend**: HTML, CSS, jQuery, Axios
 - **Database**: MySQL
 
 ### **DevOps Key Highlights**:
-1. **CI/CD Pipelines** – Automate code testing, building, and deployment using GitLab CI/CD.
-2. **IaC** – Provision environments with Vagrant and Ansible.
-3. **Containerization** – Docker for portability.
-4. **Container Orchestration** – Kubernetes for application management.
-5. **Monitoring** – Prometheus and Grafana for observability.
-
-## **Features and Technologies**
-
-- **CI/CD Pipeline** with GitLab CI/CD
-- **Docker** for containerization and orchestration using **Docker Compose**
-- **Kubernetes** for managing containers and scaling
-- **MySQL** with automated migrations and populated tables for testing
-- **phpMyAdmin** for database management
+1. **CI/CD Pipelines**: Automate the testing, building, and deployment of code with GitLab CI/CD.
+2. **Infrastructure as Code (IaC)**: Provision environments with Vagrant and Ansible.
+3. **Containerization**: Docker containers for portable and reproducible setups.
+4. **Container Orchestration**: Manage containers using Kubernetes.
+5. **Monitoring**: Implement monitoring with Prometheus and Grafana for observability.
 
 ---
 
-## **Project Setup and Deployment**
+##  **Features and Technologies**
+
+- **CI/CD Pipeline** powered by GitLab CI/CD.
+- **Docker** for containerization and orchestration via **Docker Compose**.
+- **Kubernetes** for managing containers and scaling.
+- **MySQL** with automated database migrations and populated tables.
+- **phpMyAdmin** for MySQL database management.
+- **Postman** for testing and documenting the CRUD API.
+
+---
+
+##  **Project Setup and Deployment**
 
 ### **1. Clone the Repository**
 
 Clone the repository to your local machine:
 
 ```bash
-git clone <repository_url>
-cd <project_directory>
+git clone git@gitlab.com:dissivouloudp/dsti-devops.git
+cd dsti-devops
 ```
 
 ### **2. Requirements**
 
 Ensure you have the following installed:
 - **Docker**: for containerization and running the app locally.
-- **Docker Compose**: to manage multi-container applications.
+- **Docker Compose**: for multi-container applications.
 - **Kubernetes (Minikube)**: for local cluster management.
-- **kubectl**: Kubernetes CLI.
+- **kubectl**: Kubernetes CLI tool.
 
 ### **3. Deploying Locally with Docker**
 
 1. **Run Docker Compose**:
 
-   In the project directory, run the following command to build and start the containers:
+   Run the following command to build and start the containers:
 
    ```bash
    docker-compose up --build
    ```
 
    This will:
-   - Build the Docker images.
-   - Start containers for the application and database.
-   - Automatically run migrations and populate the database tables.
+   - Build Docker images.
+   - Start the application and database containers.
+   - Automatically run database migrations and populate tables for testing.
 
 2. **Access the Application**:
    Open your browser and navigate to:
@@ -67,119 +69,115 @@ Ensure you have the following installed:
    http://localhost
    ```
 
-   The application should be running locally.
+   The application should be up and running locally.
 
 ### **4. Kubernetes Deployment**
 
 1. **Create Kubernetes Resources**:
 
-   - Apply deployment files for MySQL, PHP app, and phpMyAdmin:
-   
-     ```bash
-     kubectl apply -f mysql-deployment.yaml
-     kubectl apply -f php-app-deployment.yaml
-     kubectl apply -f phpmyadmin-deployment.yaml
-     ```
+   Apply the following deployment files:
+
+   ```bash
+   kubectl apply -f mysql-deployment.yaml
+   kubectl apply -f php-app-deployment.yaml
+   kubectl apply -f phpmyadmin-deployment.yaml
+   ```
 
 2. **Expose Services**:
 
-   Kubernetes will expose your services on **NodePort**. You can check the IP and port using:
+   Kubernetes exposes services on **NodePort**. Check the services and access them via the respective ports:
 
    ```bash
    kubectl get services
    ```
 
-   Access the services in your browser at:
-
-   - PHP App: `http://<KUBERNETES_NODE_IP>:<NodePort>`
-   - phpMyAdmin: `http://<KUBERNETES_NODE_IP>:<NodePort>`
+   Access:
+   - **PHP App**: `http://<K8s_IP>:<NodePort>`
+   - **phpMyAdmin**: `http://<K8s_IP>:<NodePort>`
 
 ---
 
-## **Configuration Files**
+##  **Configuration Files**
 
 ### **1. Docker and Docker Compose**
 
-The `docker-compose.yml` file automates the creation of Docker containers for the web application and MySQL database. It also handles migration and table population automatically during startup.
+The `docker-compose.yml` file defines the necessary services for the web application and database. It also automates the database migrations and populates the tables during startup.
 
 ### **2. Kubernetes YAML Files**
 
-The Kubernetes configurations include:
-- **mysql-deployment.yaml** – Defines the MySQL deployment with persistent storage.
+The project includes several Kubernetes resources for deploying the application:
+
+- **mysql-deployment.yaml** – Defines the MySQL deployment and persistent storage.
 - **php-app-deployment.yaml** – Defines the PHP application deployment.
-- **phpmyadmin-deployment.yaml** – Deploys phpMyAdmin for managing MySQL.
-- **mysql-pv.yaml** – Configures persistent volumes and claims for MySQL data storage.
+- **phpmyadmin-deployment.yaml** – Deploys phpMyAdmin for managing the MySQL database.
+- **mysql-pv.yaml** – Configures persistent volumes for MySQL data storage.
 
-### **3. Docker Hub Secret**
+### **3. CI/CD Pipeline with GitLab CI**
 
-The `dockerhub-secret` is used for pulling private Docker images. Here's the configuration for the Kubernetes Secret:
+The **GitLab CI/CD pipeline** automates the build and deployment process. Here's a breakdown of the pipeline stages and setup:
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: dockerhub-secret
-  annotations:
-    kubernetes.io/service-account.name: default
-type: kubernetes.io/dockerconfigjson
-data:
-  .dockerconfigjson: <encoded_docker_config_json>
-```
+#### **CI Pipeline Stages**:
+- **Build Stage**: Build the Docker image and push it to Docker Hub.
+- **Deploy Stage** (commented out in the configuration): Deploy the Docker container to a server.
 
-### **4. MySQL Persistent Volume Configuration**
+#### **GitLab CI/CD Configuration**:
+The `.gitlab-ci.yml` file is used to automate the Docker image build and deployment. The pipeline is divided into the following stages:
 
-Persistent storage is configured for MySQL using `mysql-pv.yaml`. The `PersistentVolume` (PV) and `PersistentVolumeClaim` (PVC) allow for storage persistence across pod restarts:
-
-```yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: mysql-pv
-spec:
-  capacity:
-    storage: 2Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/data"
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
-```
+1. **Build Image**:
+   - The image is built using Docker and pushed to **Docker Hub**. The pipeline authenticates to Docker Hub using the credentials stored as environment variables (`REGISTRY_USER` and `REGISTRY_PASS`).
+   
+2. **Deploy** (optional):
+   - Deploy the Docker image to a remote server (SSH access required) and run the application using Docker.
 
 ---
 
-## **Monitoring and Observability**
+##  **API Testing with Postman**
 
-1. **Prometheus and Grafana**: Installed on Kubernetes to monitor the health and performance of the application.
-2. **Alerting**: Configured to notify you of system issues or performance anomalies.
+This project uses **Postman** to test and document the CRUD API. Postman allows you to interact with the API endpoints and test their functionality.
+
+### **Steps for API Testing**:
+
+1. **Download Postman**: 
+   - If you don’t have Postman installed, download it from [Postman](https://www.postman.com/downloads/).
+
+2. **Import the Collection**:
+   - Use the provided Postman collection to interact with the CRUD API. The collection includes requests for creating, reading, updating, and deleting engineers.
+
+3. **Test the API**:
+   
+   - Use the collection to test the different API endpoints, including:
+     - **Create Engineer**: `POST /api/engineers`
+     - **Get All Engineers**: `GET /api/engineers`
+     - **Update Engineer**: `POST /api/engineers/{id}`
+     - **Delete Engineer**: `POST /api/engineers/{id}`
 
 ---
 
-## **Author**
+##  **Monitoring and Observability**
 
-- **Pascal**
-- **Abdoul**
+1. **Prometheus and Grafana**:
+   - Prometheus is used for monitoring the health of the application.
+   - Grafana is connected to Prometheus to visualize application metrics such as CPU usage, memory usage, and more.
+
+2. **Alerting**:
+   - Alerts are configured in Prometheus and Grafana to notify you when the application or any microservices are experiencing issues.
 
 ---
 
-## **Conclusion**
+##  **Author**
 
-This project showcases a modern DevOps lifecycle applied to a web application. From code development and containerization to CI/CD pipelines, Kubernetes orchestration, and monitoring, the project covers essential DevOps practices ensuring scalability, observability, and automation.
+- **Pascal DISSIVOULOUD**
+- **Abdoul BA**
+
+---
+
+##  **Conclusion**
+
+This project demonstrates a modern DevOps pipeline from development to deployment, using industry-standard tools and practices such as Docker, Kubernetes, CI/CD, and monitoring. It provides a solid foundation for scaling web applications and maintaining high reliability through automated pipelines and observability.
 
 ---
 
 ### **Additional Notes**:
-
-- **Database and Migrations**: Automatically handled via Docker Compose and Kubernetes during deployment.
-- **Testing**: Automated testing with continuous integration ensures that the app remains functional through each change. 
+- **Database and Migrations**: Handled automatically through Docker Compose and Kubernetes on deployment.
+- **Testing**: Continuous testing with GitLab CI ensures that the app remains stable and functional with each change.
 
