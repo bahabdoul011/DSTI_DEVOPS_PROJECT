@@ -13,13 +13,56 @@ try {
   die("Erreur de connexion : " . $e->getMessage());
 }
 
+// Define the array containing the engineers' data
+$LIST = array(
+  0 => array('nom' => 'MOULENGUE MOMBO', 'prenom' => 'Olivier', 'etablissement' => 'EPITA', 'diplome' => 'Ingénieur', 'promotion' => '2006'),
+  1 => array('nom' => 'BOULINGUI MOUENFJI', 'prenom' => 'Constant', 'etablissement' => 'ESIGETEL (Efrei)', 'diplome' => 'ingénieur', 'promotion' => '2000'),
+  2 => array('nom' => 'MBADINGA', 'prenom' => 'Gelase', 'etablissement' => '', 'diplome' => '', 'promotion' => ''),
+  3 => array('nom' => 'MBACKY', 'prenom' => 'Clause', 'etablissement' => 'ESIGELEC', 'diplome' => 'ingénieur', 'promotion' => '2007'),
+  4 => array('nom' => 'OLENDE OLENDE', 'prenom' => 'Damien', 'etablissement' => 'ESIGELEC', 'diplome' => 'ingénieur', 'promotion' => '2008'),
+  5 => array('nom' => 'MOUSSAVOU', 'prenom' => 'Pontien Romanic', 'etablissement' => 'ESAIP', 'diplome' => 'ingénieur', 'promotion' => ''),
+  6 => array('nom' => 'EKOMI', 'prenom' => 'Rebecca', 'etablissement' => 'IMT-BS', 'diplome' => 'ingénieur', 'promotion' => '2010'),
+  7 => array('nom' => 'Mme Sandra TAHIRO APERANO née MEDZA M\'ADZABA', 'prenom' => '', 'etablissement' => 'EPITA', 'diplome' => 'ingénieur', 'promotion' => '2010'),
+  8 => array('nom' => 'REZENDJANI REMBOGO', 'prenom' => 'Steeve Hermann', 'etablissement' => 'ESME Sudria', 'diplome' => 'ingénieur', 'promotion' => '2010'),
+  9 => array('nom' => 'MBA ABOGHE', 'prenom' => 'Valéry', 'etablissement' => 'ECAM-Rennes', 'diplome' => 'ingénieur', 'promotion' => '2005'),
+  10 => array('nom' => 'MEZUI MAMADOU', 'prenom' => 'Yanick', 'etablissement' => 'ISEP', 'diplome' => 'ingénieur', 'promotion' => '2005'),
+  11 => array('nom' => 'BIKANG ABOGHE', 'prenom' => 'Félicien', 'etablissement' => 'EFREI', 'diplome' => 'ingénieur', 'promotion' => '2001'),
+  12 => array('nom' => 'ELLA', 'prenom' => 'Franck', 'etablissement' => 'ECE', 'diplome' => 'ingénieur', 'promotion' => '1999'),
+  13 => array('nom' => 'MBONGUI NGADI MBONGO', 'prenom' => 'Jonas', 'etablissement' => 'ECE', 'diplome' => 'ingénieur', 'promotion' => '2000'),
+  14 => array('nom' => 'OBAME BIYOGHO', 'prenom' => 'Arthur', 'etablissement' => 'ESIGETEL (Efrei)', 'diplome' => 'ingénieur', 'promotion' => '2000'),
+  15 => array('nom' => 'MAVIOGA', 'prenom' => 'Patrick', 'etablissement' => 'univ. Polytechnique Hauts-de-France', 'diplome' => 'master2', 'promotion' => '2000'),
+  16 => array('nom' => 'ZENG ADZABE', 'prenom' => 'Joris', 'etablissement' => 'univ. D\'Artois', 'diplome' => 'master 2', 'promotion' => '2019'),
+  17 => array('nom' => 'OBIANG MINTO\'O', 'prenom' => 'Charles Mauril', 'etablissement' => 'univ. Polytechnique de Masuku', 'diplome' => 'ingénieur', 'promotion' => '2005'),
+  18 => array('nom' => 'MAYANDJI', 'prenom' => 'tex Derryck', 'etablissement' => 'Ecole. Polytechnique d\'Orléans', 'diplome' => 'ingénieur', 'promotion' => '2013'),
+  19 => array('nom' => 'NGOMO', 'prenom' => 'Valéry', 'etablissement' => 'Ecole Centrale Nantes', 'diplome' => 'ingénieur', 'promotion' => '2005'),
+);
+
+function seedEngineers() {
+  // Loop through the array of engineers
+  global $pdo;
+  foreach ($LIST as $engineer) {
+      $nom = $engineer['nom'];
+      $prenom = $engineer['prenom'];
+      $etablissement = $engineer['etablissement'];
+      $diplome = $engineer['diplome'];
+      $promotion = $engineer['promotion'];
+
+      // Prepare and execute the SQL query to insert data into the engineers table
+      $stmt = $pdo->prepare("INSERT INTO engineers (nom, prenom, etablissement, diplome, promotion) VALUES (?, ?, ?, ?, ?)");
+      $stmt->execute([$nom, $prenom, $etablissement, $diplome, $promotion]);
+  }
+
+  echo "Engineers data seeded successfully.";
+}
+
+
 function createEngineerTable() {
     global $pdo;
 
     try {
 
         $pdo->exec("DROP TABLE IF EXISTS engineers");
-
+        echo  "Création of the table engineers ".date('Y-m-d h:i:s');
         $pdo->exec("CREATE TABLE IF NOT EXISTS engineers (
             id INT AUTO_INCREMENT PRIMARY KEY,
             nom VARCHAR(100),
@@ -87,31 +130,6 @@ function isFile($filePath) {
 }
 
 
-
-function createMessageTable() {
-    global $pdo;
-
-    try {
-
-        $pdo->exec("DROP TABLE IF EXISTS messages");
-
-        $pdo->exec("CREATE TABLE IF NOT EXISTS messages (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            nom VARCHAR(100),
-            adresse VARCHAR(50),
-            mail VARCHAR(100),
-            sujet VARCHAR(100),
-            contenu TEXT,
-            document Text,
-            created_at DATETIME
-        )");
-
-        echo "Table 'messages' créée avec succès.";
-    } catch (PDOException $e) {
-        die("Erreur lors de la création de la table : " . $e->getMessage());
-    }
-}
-
 function registerDefaultUser() {
     // Définition des valeurs par défaut
     global $pdo;
@@ -160,264 +178,9 @@ function registerDefaultUser() {
       return false;
     }
   }
-  
-
-function envoyerEmail($destinataire, $sujet, $contenu,$expediteur) {
-   
-    // En-têtes du message
-    $headers = 'From: ' . $expediteur . "\r\n";
-    $headers .= 'Reply-To: ' . $expediteur . "\r\n";
-    $headers .= 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-    $headers .= 'Content-Transfer-Encoding: 8bit' . "\r\n";
-    $headers .= 'Return-Path: ' . $expediteur . "\r\n";
-
-    // Envoi de l'e-mail
-    $resultatEnvoi = mail($destinataire, $sujet, $contenu, $headers, array('-f', $expediteur),'-t', 587);
-
-    // Vérifier le résultat de l'envoi
-    if ($resultatEnvoi) {
-        return true; // Succès
-    } else {
-        return false; // Échec
-    } 
-}
-
-function envoyerEmail2($destinataire, $sujet, $contenu,$expediteur) {
-   
-    // En-têtes du message
-    $headers = 'From: ' . $expediteur . "\r\n";
-    $headers .= 'Reply-To: ' . $expediteur . "\r\n";
-    $headers .= 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-
-    // Envoi de l'e-mail
-    $resultatEnvoi = mail($destinataire, $sujet, $contenu, $headers);
-
-    // Vérifier le résultat de l'envoi
-    if ($resultatEnvoi) {
-        return true; // Succès
-    } else {
-        return false; // Échec
-    }
-}
-
-function envoyerEmail1($destinataire, $sujet, $contenu, $expediteur, $cheminFichier = null) {
-    // En-têtes du message
-    $headers = 'From: ' . $expediteur . "\r\n";
-    $headers .= 'Reply-To: ' . $expediteur . "\r\n";
-    $headers .= 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-Type: multipart/mixed; boundary=frontier' . "\r\n";
-
-    // Corps du message
-    $message = "--frontier\r\n";
-    $message .= "Content-Type: text/html; charset=UTF-8\r\n";
-    $message .= "Content-Transfer-Encoding: base64\r\n\r\n";
-    // $message .= base64_encode($contenu) . "\r\n";
-
-    // Ajouter la pièce jointe si spécifiée
-    // if ($cheminFichier !== null && file_exists($cheminFichier)) {
-    //     $fichierEncode = base64_encode(file_get_contents($cheminFichier));
-    //     $message .= "--frontier\r\n";
-    //     $message .= "Content-Type: application/pdf\r\n";
-    //     $message .= "Content-Disposition: attachment; filename=\"" . basename($cheminFichier) . "\"\r\n";
-    //     $message .= "Content-Transfer-Encoding: base64\r\n\r\n";
-    //     $message .= $fichierEncode . "\r\n";
-    // }
-
-    // Envoyer l'e-mail
-    $resultatEnvoi = mail($destinataire, $sujet, '', $headers, '-f' . $expediteur);
-
-    // Vérifier le résultat de l'envoi
-    if ($resultatEnvoi) {
-        return true; // Succès
-    } else {
-        return false; // Échec
-    }
-}
 
 
 
-function enregistrerFichier($dossierDestination, $inputNom, $nomFichier = null) {
-    // Vérifier si le dossier de destination existe, sinon le créer
-    if (!file_exists($dossierDestination)) {
-        mkdir($dossierDestination, 0777, true);
-    }
-    $nom=$_POST['noms'];
-    // Récupérer les informations sur le fichier
-    $nomFichier = $nomFichier ?: basename($_FILES[$inputNom]["name"]);
-    $cheminFichier = $dossierDestination . "/" . $nom. "_" . $nomFichier;
-  
-    // Vérifier si le fichier existe déjà (peu probable en raison de l'utilisation de uniqid)
-    while (file_exists($cheminFichier)) {
-        $cheminFichier = $dossierDestination . "/" . $nom. "_" . $nomFichier;
-    }
-  
-    // Déplacer le fichier vers le dossier de destination
-    if (move_uploaded_file($_FILES[$inputNom]["tmp_name"], $cheminFichier)) {
-        return $cheminFichier; // Retourner le chemin complet du fichier enregistré
-    } else {
-        return false; // Retourner false en cas d'échec
-    }
-  }
-
-// Fonction pour insérer les données et envoyer l'e-mail
-function insertMessageData($data) {
-    global $pdo;
-    $nom = !empty($data['noms']) ? $data['noms'] : '';
-    $adresse = !empty($data['adresse']) ? $data['adresse'] : '';
-    $mail = !empty($data['mail']) ? $data['mail'] : '';
-    $sujet = !empty($data['sujet']) ? $data['sujet'] : '';
-    $contenu = !empty($data['contenu']) ? $data['contenu'] : '';
-    $document = !empty($data['document']) ? $data['document'] : '';
-    $created_at = date('Y-m-d h:i:s');
-
-    // Vérifier d'abord si un enregistrement avec le même nom et prénom existe
-    $existingRecord = $pdo->prepare("SELECT id FROM messages WHERE nom = ? AND contenu = ?");
-    $existingRecord->execute([$nom, $contenu]);
-
-    if ($existingRecord->rowCount() > 0) {
-        // L'enregistrement existe déjà, vous pouvez gérer cette situation ici
-        // return "Un enregistrement avec le même nom et prénom existe déjà.";
-        return -1;
-    }
-
-    try {
-        $stmt = $pdo->prepare("INSERT INTO messages (nom, adresse, mail, sujet, contenu,created_at,document) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$nom, $adresse,$mail, $sujet, $contenu, $created_at,$document]);
-
-        // Récupérer l'ID de l'élément enregistré
-        $lastInsertedId = $pdo->lastInsertId();
-
-        // Envoyer l'e-mail
-        // oliviermoulengue@gmail.com
-        $destinataire = 'oliviermoulengue@gmail.com'; // Remplacez par l'adresse e-mail réelle
-        $sujetEmail = "L'Ordre des Ingénieurs du Gabon";
-        $contenuEmail = '<div style="background:#e2e7ec!important">
-        <div style="padding-top:20px;padding-bottom:20px">
-        <table style="padding:0px;vertical-align:top;width:100%;max-width:672px;margin:0px auto 24px;border-radius:16px;background:#1e4152;color:white!important;float:none;text-align:center" cellspacing="0" cellpadding="0" align="center">
-        <tbody>
-        <tr style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;text-align:left;vertical-align:top">
-          <td style="margin:0px;color:rgb(10,10,10);font-family:&quot;SF Pro Text&quot;,-apple-system,BlinkMacSystemFont,Roboto,&quot;Segoe UI&quot;,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;vertical-align:top;padding-top:24px;padding-right:8px;padding-left:8px;border-collapse:collapse!important">
-            <table style="vertical-align:top;width:100%;padding:0px!important" cellspacing="0" cellpadding="0" align="center">
-              <tbody>
-                <tr style="padding:0px;vertical-align:top">
-                  <td style="margin:0px;line-height:24px;vertical-align:top;border-collapse:collapse!important">
-                    <table style="vertical-align:top;width:100%;padding:0px!important" cellspacing="0" cellpadding="0" align="center">
-                      <tbody>
-                        <tr style="padding:0px;vertical-align:top">
-    
-                          <td style="line-height:24px;vertical-align:top;text-align:left;margin:0px auto;border-collapse:collapse!important;padding-right:16px!important;padding-bottom:16px!important;padding-left:16px!important">
-                            
-                            <table style="padding:0px;text-align:left;vertical-align:top;width:100%" cellspacing="0" cellpadding="0">
-                              <tbody>
-                                <tr style="padding:0px;vertical-align:top">
-                                  <td style="margin:0px;vertical-align:top;font-size:32px;line-height:32px;border-collapse:collapse!important" height="32"></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <h1 style="margin-top:0px;padding:0px;margin-bottom:16px;font-family:&quot;SF Pro Text&quot;,-apple-system,BlinkMacSystemFont,Roboto,&quot;Segoe UI&quot;,Helvetica,Arial,sans-serif;font-weight:bold;font-size:32px;line-height:40px;color:white!important"><strong>Orde des Ingénieurs du Gabon</strong></h1>
-                            
-                            <p style="padding:0px;line-height:24px;margin-bottom:16px;color:white!important;text-align:justify">
-    
-                            <b>Sujet</b> : '.$sujet.'  <br/>
-                            <b>Nom </b>: '.$nom.'  <br/>
-                            <b>Adresse e-mail </b>: '.$mail.' 
-                            </p>
-
-                            <p style="padding:0px;line-height:24px;margin-bottom:16px;color:white;text-align:justify">
-    
-                            '.$contenu.'
-                            </p>
-                            
-
-                            <table style="padding:0px;text-align:left;vertical-align:top;width:100%" cellspacing="0" cellpadding="0">
-                              <tbody>
-                                <tr style="padding:0px;vertical-align:top">
-                                  <td style="margin:0px;vertical-align:top;font-size:8px;line-height:8px;border-collapse:collapse!important" height="8"></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  </div>';
-    
-//   $comment='<p style="padding:0px;line-height:24px;margin-bottom:16px;color:white!important;text-align:justify">
-    
-//   Connectez-vous pour consulter ce document sur ce chemin daccès : </p> <p style="padding:0px;line-height:24px;margin-bottom:16px;color:white!important;text-align:justify"><u> Societe kikun digital<i style="font-size:20px"> /</i>Poles dactivites<i style="font-size:20px"> /</i>Pole marketing<i style="font-size:20px"> /</i>Template organisation </u></p>
-  
-
-//    <p style="padding:0px;color:white;text-align:justify;line-height:24px;margin-bottom:16px">
-
-//   Voici le lien: <a href="https://ged-interne.cheyi.fr" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://ged-interne.cheyi.fr&amp;source=gmail&amp;ust=1695931022542000&amp;usg=AOvVaw1t7DofR78IOQcTrjh1MqF8">https://ged-interne.cheyi.fr</a>  
-//    </p>';
-        $cheminFichier="";
-        // if(!empty($document)){
-        //     $cheminFichier="/var/www/ctri.cheyi.fr/".$document;
-        // }
-        
-        $resultatEnvoiEmail =envoyerEmail2($destinataire, $sujetEmail, $contenuEmail,$mail);
-        // $resultatEnvoiEmail = envoyerEmail($destinataire, $sujetEmail, $contenuEmail,$mail,$cheminFichier);
-
-        
-
-        // Retourner l'ID ou un message de succès
-        if ($resultatEnvoiEmail) {
-            return $lastInsertedId;
-        } else {
-            return -1; // Échec de l'envoi de l'e-mail
-        }
-
-    } catch (PDOException $e) {
-        die("Erreur lors de l'enregistrement des données : " . $e->getMessage());
-    }
-}
-
-function insertMessageData1($data) {
-    global $pdo;
-    $nom = !empty($data['noms']) ? $data['noms'] : '';
-    $adresse = !empty($data['adresse']) ? $data['adresse'] : '';
-    $mail = !empty($data['mail']) ? $data['mail'] : '';
-    $sujet = !empty($data['sujet']) ? $data['sujet'] : '';
-    $contenu = !empty($data['contenu']) ? $data['contenu'] : '';
-    $created_at = date('Y-m-d h:i:s');
-
-    // Vérifier d'abord si un enregistrement avec le même nom et prénom existe
-    $existingRecord = $pdo->prepare("SELECT id FROM messages WHERE nom = ? AND contenu = ?");
-    $existingRecord->execute([$nom, $contenu]);
-
-    if ($existingRecord->rowCount() > 0) {
-        // L'enregistrement existe déjà, vous pouvez gérer cette situation ici
-        // return "Un enregistrement avec le même nom et prénom existe déjà.";
-        return -1;
-    }
-
-    try {
-        $stmt = $pdo->prepare("INSERT INTO messages (nom, adresse, mail, sujet, contenu,created_at) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$nom, $adresse,$mail, $sujet, $contenu, $created_at]);
-
-        // Récupérer l'ID de l'élément enregistré
-        $lastInsertedId = $pdo->lastInsertId();
-
-        // Retourner l'ID ou un message de succès
-        return $lastInsertedId;
-
-    } catch (PDOException $e) {
-        die("Erreur lors de l'enregistrement des données : " . $e->getMessage());
-    }
-}
 
 function insertEngineerData($data) {
     global $pdo;
@@ -495,26 +258,7 @@ function insertEngineerData1($data) {
     }
 }
 
-function getAllMessages(){
-    global $pdo;
-    $stmt = $pdo->query("SELECT * FROM messages");
-    // Récupérez tous les enregistrements
-    $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    return $messages;
-}
-
-function getAllMessagesByMonth($month) {
-  global $pdo;
-  $stmt = $pdo->prepare("SELECT * FROM messages WHERE MONTH(created_at) = :month");
-  $stmt->bindParam(':month', $month, PDO::PARAM_INT);
-  $stmt->execute();
-
-  // Retrieve all records
-  $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-  return $messages;
-}
 
 function updateEngineerByName($nom, $nouveauNom) {
     global $pdo;
@@ -585,11 +329,6 @@ function getEngineersList() {
     }
 }
 
-function getPreviousMonth($month){
-  if($month==1){
-    return 11;
-  }  
-}
 
 function getEngineersListByMonth($month) {
   global $pdo;
@@ -670,6 +409,19 @@ function promo($promo,$ecole){
     }
     return $pro;
 }
+
+function migrate() {
+  // Créez toutes les tables nécessaires
+  createEngineerTable();
+  createUsersTable();
+  echo "Migration terminée.";
+  
+}
+
+// Lancer la migration
+// migrate();
+
+// seedEngineers();
 
 
 

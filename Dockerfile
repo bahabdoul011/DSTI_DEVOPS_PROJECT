@@ -9,6 +9,10 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
+# Install PHPUnit
+RUN curl -sS https://getcomposer.org/installer | php \
+    && php composer.phar require --dev phpunit/phpunit ^9
+
 # Installer les extensions PHP nécessaires
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 

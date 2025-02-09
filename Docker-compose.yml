@@ -10,10 +10,12 @@ services:
       - "8080:80"
     volumes:
       - ./src:/var/www/html
+      - ./tests:/var/www/tests # Mount the tests directory
     depends_on:
       - db
     networks:
       - app-network
+    command: bash -c "sleep 10 && php /var/www/html/Connexion/migration.php && apache2-foreground"
 
   # Service pour la base de données MySQL
   db:
@@ -46,6 +48,19 @@ services:
       - db
     networks:
       - app-network
+
+  # Service to run PHPUnit tests
+  phpunit:
+    build: .
+    container_name: phpunit
+    volumes:
+      - ./src:/var/www/html
+      - ./tests:/var/www/tests
+    depends_on:
+      - db
+    networks:
+      - app-network
+    command: bash -c "sleep 10 && vendor/bin/phpunit /var/www/tests"
 
 # Définition du réseau
 networks:
