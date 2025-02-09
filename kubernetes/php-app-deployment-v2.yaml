@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-app-2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: php-app
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: php-app
+        version: v2
+    spec:
+      imagePullSecrets:
+        - name: dockerhub-secret
+      containers:
+        - name: php-app
+          image: dissivouloud/dsti-devops-project:lastest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: app-data
+              mountPath: /var/www/html
+      volumes:
+        - name: app-data
+          emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-app-2
+spec:
+  selector:
+    app: php-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
