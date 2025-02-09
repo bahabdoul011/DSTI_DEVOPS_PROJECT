@@ -1,178 +1,146 @@
-# DevOps Project: Engineer Registration Web Application
+# **DevOps Project: Engineer Registration Web Application**
 
 ## **Introduction**
 
-This project is designed to create a web application for engineers to register for IT engineering projects, showcasing the integration of DevOps methodologies with application development. The primary focus is on building the app with automation, scalability, and reliability, using tools and practices such as CI/CD, Docker, Kubernetes, and monitoring.
+This project focuses on developing a web application that allows engineers to register for IT engineering projects. It integrates DevOps methodologies to ensure automation, scalability, and reliability. The project utilizes tools and best practices such as CI/CD, Docker, Kubernetes, and monitoring.
 
+### **Technology Stack**
 - **Backend**: PHP
 - **Frontend**: HTML, CSS, jQuery, Axios
 - **Database**: MySQL
 
-### **DevOps Key Highlights**:
-1. **CI/CD Pipelines**: Automate the testing, building, and deployment of code with GitLab CI/CD.
-2. **Infrastructure as Code (IaC)**: Provision environments with Vagrant and Ansible.
-3. **Containerization**: Docker containers for portable and reproducible setups.
-4. **Container Orchestration**: Manage containers using Kubernetes.
-5. **Monitoring**: Implement monitoring with Prometheus and Grafana for observability.
+### **DevOps Key Features**
+1. **CI/CD Pipelines**: Automated testing, building, and deployment using GitLab CI/CD.
+2. **Infrastructure as Code (IaC)**: Environment provisioning using Vagrant and Ansible.
+3. **Containerization**: Utilizing Docker for portability and consistency.
+4. **Container Orchestration**: Managing and scaling containers with Kubernetes.
+5. **Monitoring and Observability**: Implementing Prometheus and Grafana for system insights.
 
 ---
 
 ## **Features and Technologies**
 
-- **CI/CD Pipeline** powered by GitLab CI/CD.
-- **Docker** for containerization and orchestration via **Docker Compose**.
-- **Kubernetes** for managing containers and scaling.
-- **MySQL** with automated database migrations and populated tables.
-- **phpMyAdmin** for MySQL database management.
-- **Postman** for testing and documenting the CRUD API.
+- **CI/CD Pipeline** powered by GitLab CI/CD for automated workflows.
+- **Docker** for containerization, using **Docker Compose** for multi-container management.
+- **Kubernetes** for orchestrating and scaling containerized services.
+- **MySQL** with automated database migrations and pre-populated tables.
+- **phpMyAdmin** for simplified MySQL database management.
+- **Postman** for API testing and documentation.
 
 ---
 
 ## **Project Setup and Deployment**
 
-### **1. Clone the Repository**
+### **1. Cloning the Repository**
 
 Clone the repository to your local machine:
-
 ```bash
 git clone git@gitlab.com:dissivouloudp/dsti-devops.git
 cd dsti-devops
 ```
 
-### **2. Requirements**
-
-Ensure you have the following installed:
-- **Docker**: for containerization and running the app locally.
-- **Docker Compose**: for multi-container applications.
-- **Kubernetes (Minikube)**: for local cluster management.
-- **kubectl**: Kubernetes CLI tool.
+### **2. System Requirements**
+Ensure the following tools are installed:
+- **Docker** for containerization.
+- **Docker Compose** for managing multi-container applications.
+- **Kubernetes (Minikube)** for running a local Kubernetes cluster.
+- **kubectl** for Kubernetes command-line operations.
 
 ### **3. Deploying Locally with Docker**
 
-1. **Run Docker Compose**:
-
-   Run the following command to build and start the containers:
-
+1. **Start Docker Compose**:
    ```bash
    docker-compose up --build
    ```
-
-   This will:
-   - Build Docker images.
-   - Start the application and database containers.
-   - Automatically run database migrations and populate tables for testing.
+   - Builds Docker images.
+   - Starts application and database containers.
+   - Runs database migrations and populates tables.
 
 2. **Access the Application**:
-   Open your browser and navigate to:
+   - Open a browser and go to:
+     ```
+     http://localhost
+     ```
 
-   ```
-   http://localhost
-   ```
+### **4. Deploying with Kubernetes**
 
-   The application should be up and running locally.
-
-### **4. Kubernetes Deployment**
-
-1. **Create Kubernetes Resources**:
-
-   Apply the following deployment files:
-
+1. **Apply Kubernetes Configurations**:
    ```bash
    kubectl apply -f mysql-deployment.yaml
    kubectl apply -f php-app-deployment.yaml
    kubectl apply -f phpmyadmin-deployment.yaml
    ```
 
-2. **Expose Services**:
-
-   Kubernetes exposes services on **NodePort**. Check the services and access them via the respective ports:
-
+2. **Expose Kubernetes Services**:
    ```bash
    kubectl get services
    ```
-
-   Access:
-   - **PHP App**: `http://<K8s_IP>:<NodePort>`
-   - **phpMyAdmin**: `http://<K8s_IP>:<NodePort>`
+   - Access the application and phpMyAdmin using the displayed NodePort.
 
 ---
 
 ## **Configuration Files**
 
 ### **1. Docker and Docker Compose**
+Defines services, environment variables, and automated setup for MySQL and the PHP application.
 
-The `docker-compose.yml` file defines the necessary services for the web application and database. It also automates the database migrations and populates the tables during startup.
+### **2. Kubernetes Deployment Files**
+- **mysql-deployment.yaml**: Defines MySQL deployment with persistent storage.
+- **php-app-deployment.yaml**: Deploys the PHP application.
+- **phpmyadmin-deployment.yaml**: Sets up phpMyAdmin for database management.
+- **mysql-pv.yaml**: Configures persistent volumes for MySQL data.
 
-### **2. Kubernetes YAML Files**
+### **3. CI/CD Pipeline Configuration (GitLab CI/CD)**
+The `.gitlab-ci.yml` file automates build and deployment stages:
 
-The project includes several Kubernetes resources for deploying the application:
+#### **Pipeline Stages**:
+1. **Build**: Builds Docker images and pushes them to Docker Hub.
+2. **Deploy**: Deploys images to a remote server (optional).
 
-- **mysql-deployment.yaml** – Defines the MySQL deployment and persistent storage.
-- **php-app-deployment.yaml** – Defines the PHP application deployment.
-- **phpmyadmin-deployment.yaml** – Deploys phpMyAdmin for managing the MySQL database.
-- **mysql-pv.yaml** – Configures persistent volumes for MySQL data storage.
+Example Docker image: `dissivouloud/dsti-devops-project:latest`
 
-### **3. CI/CD Pipeline with GitLab CI**
+---
 
-The **GitLab CI/CD pipeline** automates the build and deployment process. Here's a breakdown of the pipeline stages and setup:
+## **Infrastructure as Code (IaC) with Vagrant**
 
-#### **CI Pipeline Stages**:
-- **Build Stage**: Build the Docker image and push it to Docker Hub.
-- **Deploy Stage** (commented out in the configuration): Deploy the Docker container to a server.
-
-#### **GitLab CI/CD Configuration**:
-The `.gitlab-ci.yml` file is used to automate the Docker image build and deployment. The pipeline is divided into the following stages:
-
-1. **Build Image**:
-   - The image is built using Docker and pushed to **Docker Hub**. The pipeline authenticates to Docker Hub using the credentials stored as environment variables (`REGISTRY_USER` and `REGISTRY_PASS`).
-   - The Docker Hub image used is `dissivouloud/dsti-devops-project:lastest`.
-   
-2. **Deploy** (optional):
-   - Deploy the Docker image to a remote server (SSH access required) and run the application using Docker.
-
-   ![alt text](image-3.png)
-
-   ![alt text](image.png)
-
-   This is the picture in Docker Hub after automation and the update of the image
-
-   ![alt text](image-1.png)
+1. **Initialize Vagrant**:
+   ```bash
+   vagrant up
+   ```
+2. **Provision the Environment**:
+   ```bash
+   vagrant provision
+   ```
+3. **Access the Virtual Machine**:
+   ```bash
+   vagrant ssh
+   ```
 
 ---
 
 ## **API Testing with Postman**
 
-This project uses **Postman** to test and document the CRUD API. Postman allows you to interact with the API endpoints and test their functionality.
+This project uses **Postman** for testing CRUD operations.
 
-### **Steps for API Testing**:
-
-1. **Download Postman**: 
-   - If you don’t have Postman installed, download it from [Postman](https://www.postman.com/downloads/).
-
-2. **Import the Collection**:
-   - Use the provided Postman collection to interact with the CRUD API. The collection includes requests for creating, reading, updating, and deleting engineers.
-
-3. **Test the API**:
-   - Use the collection to test the different API endpoints, including:
-     - **Create Engineer**: `POST /api/engineers`
-     - **Get All Engineers**: `GET /api/engineers`
-     - **Update Engineer**: `POST /api/engineers/{id}`
-     - **Delete Engineer**: `POST /api/engineers/{id}`
+### **API Testing Steps**:
+1. **Download Postman**: [Postman Download](https://www.postman.com/downloads/)
+2. **Import API Collection**: Load the provided collection for testing endpoints.
+3. **Perform CRUD operations**: Create, read, update, and delete engineer records.
 
 ---
 
 ## **Monitoring and Observability**
 
 1. **Prometheus and Grafana**:
-   - Prometheus is used for monitoring the health of the application.
-   - Grafana is connected to Prometheus to visualize application metrics such as CPU usage, memory usage, and more.
+   - **Prometheus** collects application metrics.
+   - **Grafana** visualizes CPU usage, memory usage, and system health.
 
-2. **Alerting**:
-   - Alerts are configured in Prometheus and Grafana to notify you when the application or any microservices are experiencing issues.
+2. **Alerts and Notifications**:
+   - Configured alerts in Prometheus and Grafana notify of potential issues.
 
 ---
 
-## **Author**
+## **Authors**
 
 - **Pascal DISSIVOULOUD**
 - **Abdoul BA**
@@ -181,19 +149,18 @@ This project uses **Postman** to test and document the CRUD API. Postman allows 
 
 ## **Conclusion**
 
-This project demonstrates a modern DevOps pipeline from development to deployment, using industry-standard tools and practices such as Docker, Kubernetes, CI/CD, and monitoring. It provides a solid foundation for scaling web applications and maintaining high reliability through automated pipelines and observability.
+This project showcases a complete DevOps pipeline from development to deployment using industry-standard tools such as Docker, Kubernetes, CI/CD, and monitoring solutions. It provides a scalable and automated solution for managing web applications efficiently.
 
 ---
 
-### **Here is the screenshot of the app running locally**
-![alt text](screencapture-localhost-8080-2025-02-09-18_38_47.png)
+### **Application Running Locally**
+![Localhost Screenshot](screencapture-localhost-8080-2025-02-09-18_38_47.png)
 
-  
-![The Login page](image-10.png)
+![Login Page](image-10.png)
 
-![alt text](screencapture-localhost-8080-Admin-Ingenieurs-2025-02-09-18_40_10.png)
+![Admin Panel](screencapture-localhost-8080-Admin-Ingenieurs-2025-02-09-18_40_10.png)
 
 ### **Additional Notes**:
-- **Database and Migrations**: Handled automatically through Docker Compose and Kubernetes on deployment.
-- **Testing**: Continuous testing with GitLab CI ensures that the app remains stable and functional with each change.
+- **Database and Migrations**: Automatically handled through Docker Compose and Kubernetes.
+- **Testing**: Continuous integration with GitLab CI/CD ensures stability.
 
