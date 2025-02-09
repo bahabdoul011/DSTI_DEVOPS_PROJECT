@@ -415,12 +415,12 @@ if(empty($_SESSION["ctri"]["id"])){
         $(document).ready(function () {
             $('.delete').on('click', function () {
                 let engineerId = $(this).data('id'); // Récupérer l'ID de l'ingénieur
-               
+                // alert(engineerId);
                 if (!engineerId) {
                     alert("ID introuvable.");
                     return;
                 }
-                
+
                 if (confirm("Voulez-vous vraiment supprimer cet ingénieur ? Cette action est irréversible !")) {
                     axios.post('../../Connexion/delete.php', { id: engineerId })
                         .then(function (response) {
