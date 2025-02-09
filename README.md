@@ -1,6 +1,6 @@
 # DevOps Project: Engineer Registration Web Application
 
-##  **Introduction**
+## **Introduction**
 
 This project is designed to create a web application for engineers to register for IT engineering projects, showcasing the integration of DevOps methodologies with application development. The primary focus is on building the app with automation, scalability, and reliability, using tools and practices such as CI/CD, Docker, Kubernetes, and monitoring.
 
@@ -17,7 +17,7 @@ This project is designed to create a web application for engineers to register f
 
 ---
 
-##  **Features and Technologies**
+## **Features and Technologies**
 
 - **CI/CD Pipeline** powered by GitLab CI/CD.
 - **Docker** for containerization and orchestration via **Docker Compose**.
@@ -28,7 +28,7 @@ This project is designed to create a web application for engineers to register f
 
 ---
 
-##  **Project Setup and Deployment**
+## **Project Setup and Deployment**
 
 ### **1. Clone the Repository**
 
@@ -90,18 +90,6 @@ Ensure you have the following installed:
    ```bash
    kubectl get services
    ```
-![alt text](image-4.png)
-
-![alt text](image-5.png)
-
-![alt text](image-6.png)
-
-![alt text](image-7.png)
-
-![alt text](image-8.png)
-
-![alt text](image-9.png)
-
 
    Access:
    - **PHP App**: `http://<K8s_IP>:<NodePort>`
@@ -109,11 +97,10 @@ Ensure you have the following installed:
 
 ---
 
-##  **Configuration Files**
+## **Configuration Files**
 
 ### **1. Docker and Docker Compose**
 
-![alt text](image-2.png)
 The `docker-compose.yml` file defines the necessary services for the web application and database. It also automates the database migrations and populates the tables during startup.
 
 ### **2. Kubernetes YAML Files**
@@ -138,6 +125,7 @@ The `.gitlab-ci.yml` file is used to automate the Docker image build and deploym
 
 1. **Build Image**:
    - The image is built using Docker and pushed to **Docker Hub**. The pipeline authenticates to Docker Hub using the credentials stored as environment variables (`REGISTRY_USER` and `REGISTRY_PASS`).
+   - The Docker Hub image used is `dissivouloud/dsti-devops-project:lastest`.
    
 2. **Deploy** (optional):
    - Deploy the Docker image to a remote server (SSH access required) and run the application using Docker.
@@ -149,9 +137,10 @@ The `.gitlab-ci.yml` file is used to automate the Docker image build and deploym
    This is the picture in Docker Hub after automation and the update of the image
 
    ![alt text](image-1.png)
+
 ---
 
-##  **API Testing with Postman**
+## **API Testing with Postman**
 
 This project uses **Postman** to test and document the CRUD API. Postman allows you to interact with the API endpoints and test their functionality.
 
@@ -164,7 +153,6 @@ This project uses **Postman** to test and document the CRUD API. Postman allows 
    - Use the provided Postman collection to interact with the CRUD API. The collection includes requests for creating, reading, updating, and deleting engineers.
 
 3. **Test the API**:
-   
    - Use the collection to test the different API endpoints, including:
      - **Create Engineer**: `POST /api/engineers`
      - **Get All Engineers**: `GET /api/engineers`
@@ -173,7 +161,7 @@ This project uses **Postman** to test and document the CRUD API. Postman allows 
 
 ---
 
-##  **Monitoring and Observability**
+## **Monitoring and Observability**
 
 1. **Prometheus and Grafana**:
    - Prometheus is used for monitoring the health of the application.
@@ -184,14 +172,14 @@ This project uses **Postman** to test and document the CRUD API. Postman allows 
 
 ---
 
-##  **Author**
+## **Author**
 
 - **Pascal DISSIVOULOUD**
 - **Abdoul BA**
 
 ---
 
-##  **Conclusion**
+## **Conclusion**
 
 This project demonstrates a modern DevOps pipeline from development to deployment, using industry-standard tools and practices such as Docker, Kubernetes, CI/CD, and monitoring. It provides a solid foundation for scaling web applications and maintaining high reliability through automated pipelines and observability.
 
