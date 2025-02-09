@@ -1,93 +1,185 @@
-# dsti-devops
 
+# DevOps Project: Engineer Registration Web Application
 
+## **Introduction**
 
-## Getting started
+This project focuses on building a web application for engineers to register for IT engineering projects. The primary goal is to combine efficient software engineering practices with robust DevOps methodologies. The project emphasizes a DevOps lifecycle with a focus on Continuous Integration (CI), Continuous Delivery/Deployment (CD), Infrastructure as Code (IaC), container orchestration, and monitoring.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- **Backend**: PHP
+- **Frontend**: HTML, CSS, jQuery, Axios
+- **Database**: MySQL
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### **DevOps Key Highlights**:
+1. **CI/CD Pipelines** – Automate code testing, building, and deployment using GitLab CI/CD.
+2. **IaC** – Provision environments with Vagrant and Ansible.
+3. **Containerization** – Docker for portability.
+4. **Container Orchestration** – Kubernetes for application management.
+5. **Monitoring** – Prometheus and Grafana for observability.
 
-## Add your files
+## **Features and Technologies**
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+- **CI/CD Pipeline** with GitLab CI/CD
+- **Docker** for containerization and orchestration using **Docker Compose**
+- **Kubernetes** for managing containers and scaling
+- **MySQL** with automated migrations and populated tables for testing
+- **phpMyAdmin** for database management
 
+---
+
+## **Project Setup and Deployment**
+
+### **1. Clone the Repository**
+
+Clone the repository to your local machine:
+
+```bash
+git clone <repository_url>
+cd <project_directory>
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/dissivouloudp/dsti-devops.git
-git branch -M main
-git push -uf origin main
+
+### **2. Requirements**
+
+Ensure you have the following installed:
+- **Docker**: for containerization and running the app locally.
+- **Docker Compose**: to manage multi-container applications.
+- **Kubernetes (Minikube)**: for local cluster management.
+- **kubectl**: Kubernetes CLI.
+
+### **3. Deploying Locally with Docker**
+
+1. **Run Docker Compose**:
+
+   In the project directory, run the following command to build and start the containers:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   This will:
+   - Build the Docker images.
+   - Start containers for the application and database.
+   - Automatically run migrations and populate the database tables.
+
+2. **Access the Application**:
+   Open your browser and navigate to:
+
+   ```
+   http://localhost
+   ```
+
+   The application should be running locally.
+
+### **4. Kubernetes Deployment**
+
+1. **Create Kubernetes Resources**:
+
+   - Apply deployment files for MySQL, PHP app, and phpMyAdmin:
+   
+     ```bash
+     kubectl apply -f mysql-deployment.yaml
+     kubectl apply -f php-app-deployment.yaml
+     kubectl apply -f phpmyadmin-deployment.yaml
+     ```
+
+2. **Expose Services**:
+
+   Kubernetes will expose your services on **NodePort**. You can check the IP and port using:
+
+   ```bash
+   kubectl get services
+   ```
+
+   Access the services in your browser at:
+
+   - PHP App: `http://<KUBERNETES_NODE_IP>:<NodePort>`
+   - phpMyAdmin: `http://<KUBERNETES_NODE_IP>:<NodePort>`
+
+---
+
+## **Configuration Files**
+
+### **1. Docker and Docker Compose**
+
+The `docker-compose.yml` file automates the creation of Docker containers for the web application and MySQL database. It also handles migration and table population automatically during startup.
+
+### **2. Kubernetes YAML Files**
+
+The Kubernetes configurations include:
+- **mysql-deployment.yaml** – Defines the MySQL deployment with persistent storage.
+- **php-app-deployment.yaml** – Defines the PHP application deployment.
+- **phpmyadmin-deployment.yaml** – Deploys phpMyAdmin for managing MySQL.
+- **mysql-pv.yaml** – Configures persistent volumes and claims for MySQL data storage.
+
+### **3. Docker Hub Secret**
+
+The `dockerhub-secret` is used for pulling private Docker images. Here's the configuration for the Kubernetes Secret:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dockerhub-secret
+  annotations:
+    kubernetes.io/service-account.name: default
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: <encoded_docker_config_json>
 ```
 
-## Integrate with your tools
+### **4. MySQL Persistent Volume Configuration**
 
-- [ ] [Set up project integrations](https://gitlab.com/dissivouloudp/dsti-devops/-/settings/integrations)
+Persistent storage is configured for MySQL using `mysql-pv.yaml`. The `PersistentVolume` (PV) and `PersistentVolumeClaim` (PVC) allow for storage persistence across pod restarts:
 
-## Collaborate with your team
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+```
 
-## Test and Deploy
+---
 
-Use the built-in continuous integration in GitLab.
+## **Monitoring and Observability**
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+1. **Prometheus and Grafana**: Installed on Kubernetes to monitor the health and performance of the application.
+2. **Alerting**: Configured to notify you of system issues or performance anomalies.
 
-***
+---
 
-# Editing this README
+## **Author**
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+- **Pascal**
+- **Abdoul**
 
-## Suggestions for a good README
+---
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## **Conclusion**
 
-## Name
-Choose a self-explaining name for your project.
+This project showcases a modern DevOps lifecycle applied to a web application. From code development and containerization to CI/CD pipelines, Kubernetes orchestration, and monitoring, the project covers essential DevOps practices ensuring scalability, observability, and automation.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+---
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### **Additional Notes**:
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+- **Database and Migrations**: Automatically handled via Docker Compose and Kubernetes during deployment.
+- **Testing**: Automated testing with continuous integration ensures that the app remains functional through each change. 
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.

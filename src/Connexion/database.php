@@ -129,13 +129,37 @@ function isFile($filePath) {
   }
 }
 
+function deleteEngineer($id) {
+  global $pdo;
+
+  if (empty($id)) {
+      return json_encode(["success" => false, "status" => "fail", "message" => "Missing ID."]);
+  }
+
+  try {
+      $query = "DELETE FROM engineers WHERE id = :id";
+      $stmt = $pdo->prepare($query);
+      $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt->execute();
+
+      if ($stmt->rowCount() > 0) {
+          return json_encode(["success" => true, "status" => "success", "message" => "Ingénieur supprimé avec succès."]);
+      } else {
+          return json_encode(["success" => false, "status" => "fail", "message" => "Aucun ingénieur trouvé avec cet ID."]);
+      }
+  } catch (PDOException $e) {
+      return json_encode(["success" => false, "status" => "error", "message" => "Erreur SQL : " . $e->getMessage()]);
+  }
+}
+
+
 
 function registerDefaultUser() {
     // Définition des valeurs par défaut
     global $pdo;
     $nom = "Admin";
-    $email = "admin@ctri.com";
-    $password = "CTR1G@bon";
+    $email = "admin@eng.com";
+    $password = "Ingeeners@bon";
   
     // Hachage du mot de passe
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -223,6 +247,58 @@ function insertEngineerData($data) {
         die("Erreur lors de l'enregistrement des données : " . $e->getMessage());
     }
 }
+
+function updateEngineer($id, $data) {
+  global $pdo;
+
+  try {
+      // Vérifier si les données sont valides
+      if (empty($id) || !is_array($data)) {
+          return json_encode(["success" => false, "status" => "fail", "message" => "Invalid input parameters."]);
+      }
+
+      // Préparation de la requête SQL
+      $query = "UPDATE engineers 
+                SET nom = :nom, prenom = :prenom, email = :email, pays = :pays, ville = :ville, 
+                    etablissement = :etablissement, formation = :formation, diplome = :diplome, 
+                    fonction = :fonction, secteur = :secteur, promotion = :promotion, tel = :tel, 
+                    linkedin = :linkedin, facebook = :facebook
+                WHERE id = :id";
+
+      $stmt = $pdo->prepare($query);
+
+      // Liaison des paramètres
+      $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt->bindParam(':nom', $data['nom'], PDO::PARAM_STR);
+      $stmt->bindParam(':prenom', $data['prenom'], PDO::PARAM_STR);
+      $stmt->bindParam(':email', $data['email'], PDO::PARAM_STR);
+      $stmt->bindParam(':pays', $data['pays'], PDO::PARAM_STR);
+      $stmt->bindParam(':ville', $data['ville'], PDO::PARAM_STR);
+      $stmt->bindParam(':etablissement', $data['etablissement'], PDO::PARAM_STR);
+      $stmt->bindParam(':formation', $data['formation'], PDO::PARAM_STR);
+      $stmt->bindParam(':diplome', $data['diplome'], PDO::PARAM_STR);
+      $stmt->bindParam(':fonction', $data['fonction'], PDO::PARAM_STR);
+      $stmt->bindParam(':secteur', $data['secteur'], PDO::PARAM_STR);
+      $stmt->bindParam(':promotion', $data['promotion'], PDO::PARAM_STR);
+      $stmt->bindParam(':tel', $data['tel'], PDO::PARAM_STR);
+      $stmt->bindParam(':linkedin', $data['linkedin'], PDO::PARAM_STR);
+      $stmt->bindParam(':facebook', $data['facebook'], PDO::PARAM_STR);
+
+      // Exécution de la requête
+      $stmt->execute();
+
+      // Vérifier si une ligne a été mise à jour
+      if ($stmt->rowCount() > 0) {
+          return json_encode(["success" => true, "status" => "success", "message" => "Engineer updated successfully."]);
+      } else {
+          return json_encode(["success" => false, "status" => "fail", "message" => "No changes made or engineer not found."]);
+      }
+
+  } catch (PDOException $e) {
+      return json_encode(["success" => false, "status" => "error", "message" => "Database error: " . $e->getMessage()]);
+  }
+}
+
 
 
 function insertEngineerData1($data) {

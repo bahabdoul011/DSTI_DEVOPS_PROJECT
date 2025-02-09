@@ -1,0 +1,26 @@
+# Ignore .env file
+.env
+
+# Ignore vendor directory (Composer dependencies)
+/vendor/
+
+# Ignore PHPUnit test results
+phpunit.xml
+phpunit.xml.dist
+test-results/
+
+# Ignore IDE configurations
+/.idea/
+/.vscode/
+
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore cache and temporary files
+*.cache
+*.tmp
+*.swp

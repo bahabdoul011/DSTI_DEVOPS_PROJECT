@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>CTRI</title>
-    <meta content="Rejoignez l'ordre des ingénieurs,  des chercheurs et tous les scientifiques du Gabon et ceux de la diaspora." name="description">
-    <meta content="L'Ordre des Ingénieurs du Gabon (O.I.G), formulaire, professionnels de l'ingénierie, CTRI" name="keywords">
+    <title>Eng</title>
+    <meta content="Join the order of engineers, researchers, and all scientists." name="description">  
+    <meta content="The Order of Engineers, application form, engineering professionals" name="keywords">  
     <!-- Favicons -->
-    <link href="../assets/img/icon_gabon7.jpg" rel="icon">
-    <link href="../assets/img/icon_gabon7.jpg" rel="apple-touch-icon">
+    
     <!-- Google Fonts -->
     <!-- Vendor CSS Files -->
 
@@ -16,7 +15,7 @@
 <body>
     <section class="container">
         <div class="login-container">
-            <div > <img class="circle circle-one" src="../assets/img/logo_ctri.png"></div>
+            
             <div class="form-container">
                 <img src="../assets/img/illustration.png" alt="illustration" class="illustration" />
                 <?php if(!empty($_GET["error"])){ ?>

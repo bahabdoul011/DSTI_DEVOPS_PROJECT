@@ -10,7 +10,7 @@ services:
       - "8080:80"
     volumes:
       - ./src:/var/www/html
-      - ./tests:/var/www/tests # Mount the tests directory
+      - ./tests:/var/www/tests # Monter le répertoire des tests
     depends_on:
       - db
     networks:
@@ -49,13 +49,14 @@ services:
     networks:
       - app-network
 
-  # Service to run PHPUnit tests
+  # Service pour exécuter les tests PHPUnit
   phpunit:
     build: .
     container_name: phpunit
     volumes:
       - ./src:/var/www/html
       - ./tests:/var/www/tests
+      - ./vendor:/var/www/vendor  
     depends_on:
       - db
     networks:

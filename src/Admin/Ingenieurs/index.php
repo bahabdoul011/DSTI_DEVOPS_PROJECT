@@ -8,16 +8,15 @@ if(empty($_SESSION["ctri"]["id"])){
  $list=getEngineersList();
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>CTRI</title>
-    <meta content="Rejoignez l'ordre des ingénieurs,  des chercheurs et tous les scientifiques du Gabon et ceux de la diaspora." name="description">
-    <meta content="L'Ordre des Ingénieurs du Gabon (O.I.G), formulaire, professionnels de l'ingénierie, CTRI" name="keywords">
+    <title>Engineers</title>
+    <meta content="Join the order of engineers, researchers, and all scientists." name="description">  
+    <meta content="The Order of Engineers, application form, engineering professionals" name="keywords">  
     <!-- Favicons -->
-    <link href="../../assets/img/icon_gabon7.jpg" rel="icon">
-    <link href="../../assets/img/icon_gabon7.jpg" rel="apple-touch-icon">
+  
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -27,6 +26,7 @@ if(empty($_SESSION["ctri"]["id"])){
     <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="../../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Template Main CSS File -->
     <link href="../../assets/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -37,16 +37,14 @@ if(empty($_SESSION["ctri"]["id"])){
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
       <div class="container d-flex align-items-center justify-content-between">
         <div class="logo">
-          <!-- <h1><a href="index.php"><b style="color:#da7c43;">CTRI</b> <b></b></a></h1> -->
-          <a href="/"><img src="../../assets/img/logo_ctri.png" alt="" class="img-fluid"></a>
+          <h1><a href="index.php"><b style="color:#da7c43;">Eng</b> <b></b></a></h1>
         </div>
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a class="nav-link scrollto " href="../">Accueil</a></li>
-            <li><a class="nav-link scrollto active" href="javascript:void(0);">Ingénieurs</a></li>
-            <li><a class="nav-link scrollto" href="../Messages/">Messages</a></li>
-            <li><a class="nav-link scrollto" href="../../">Site</a></li>
-            <li><a class="nav-link scrollto" href="../../logout">Deconnexion</a></li>
+            <li><a class="nav-link scrollto " href="../">Home</a></li>
+            <li><a class="nav-link scrollto active" href="javascript:void(0);">Engineers</a></li>
+            <li><a class="nav-link scrollto" href="../../">Website</a></li>
+            <li><a class="nav-link scrollto" href="../../logout">Logout</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
@@ -120,79 +118,153 @@ if(empty($_SESSION["ctri"]["id"])){
     </section>
     <!-- End Hero -->
 
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 50%; margin: 0 auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="name">Name & Surname</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" id="country" name="country">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" name="city">
+                    </div>
+                    <div class="form-group">
+                        <label for="institution">Institution</label>
+                        <input type="text" class="form-control" id="institution" name="institution">
+                    </div>
+                    <div class="form-group">
+                        <label for="training">Training</label>
+                        <input type="text" class="form-control" id="training" name="training">
+                    </div>
+                    <div class="form-group">
+                        <label for="degree">Degree</label>
+                        <input type="text" class="form-control" id="degree" name="degree">
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Position</label>
+                        <input type="text" class="form-control" id="position" name="position">
+                    </div>
+                    <div class="form-group">
+                        <label for="sector">Sector</label>
+                        <input type="text" class="form-control" id="sector" name="sector">
+                    </div>
+                    <div class="form-group">
+                        <label for="promotion">Graduation Year</label>
+                        <input type="text" class="form-control" id="promotion" name="promotion">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date" name="date">
+                    </div>
+                    <input type="hidden" id="id">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width: 50%; margin: 0 auto;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Informations</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table>
-          <tr>
-            <td>Nom & Prénom</td>
-            <td class="data-nom"></td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td class="data-email"></td>
-          </tr>
-          <tr>
-            <td>Pays</td>
-            <td class="data-pays"></td>
-          </tr>
-          <tr>
-            <td>Ville</td>
-            <td class="data-ville"></td>
-          </tr>
-          <tr>
-            <td>Etablissement</td>
-            <td class="data-etablissement"></td>
-          </tr>
-          <tr>
-            <td>Pays</td>
-            <td class="data-pays"></td>
-          </tr>
-          <tr>
-            <td>Formation</td>
-            <td class="data-formation"></td>
-          </tr>
-          <tr>
-            <td>Diplome</td>
-            <td class="data-diplome"></td>
-          </tr>
-          <tr>
-            <td>Fonction</td>
-            <td class="data-fonction"></td>
-          </tr>
-          <tr>
-            <td>Secteur</td>
-            <td class="data-secteur"></td>
-          </tr>
-          <tr>
-            <td>Promotion</td>
-            <td class="data-promotion"></td>
-          </tr>
-          <tr>
-            <td>Tél</td>
-            <td class="data-tel"></td>
-          </tr>
-          <tr>
-            <td>Date</td>
-            <td class="data-created_at"></td>
-          </tr>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-primary">Enregistrer</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button> -->
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      <div class="modal-dialog" style="max-width: 50%; margin: 0 auto;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table>
+              <tr>
+                <td>Name & Surname</td>
+                <td class="data-nom"></td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td class="data-email"></td>
+              </tr>
+              <tr>
+                <td>Country</td>
+                <td class="data-pays"></td>
+              </tr>
+              <tr>
+                <td>City</td>
+                <td class="data-ville"></td>
+              </tr>
+              <tr>
+                <td>Institution</td>
+                <td class="data-etablissement"></td>
+              </tr>
+              <tr>
+                <td>Country</td>
+                <td class="data-pays"></td>
+              </tr>
+              <tr>
+                <td>Training</td>
+                <td class="data-formation"></td>
+              </tr>
+              <tr>
+                <td>Degree</td>
+                <td class="data-diplome"></td>
+              </tr>
+              <tr>
+                <td>Position</td>
+                <td class="data-fonction"></td>
+              </tr>
+              <tr>
+                <td>Sector</td>
+                <td class="data-secteur"></td>
+              </tr>
+              <tr>
+                <td>Graduation Year</td>
+                <td class="data-promotion"></td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td class="data-tel"></td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td class="data-created_at"></td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
 
     <main id="main">
       
@@ -205,7 +277,7 @@ if(empty($_SESSION["ctri"]["id"])){
               line-height: 32px;
               font-size: 24px;
               color: #4d8090;
-              ">Le comité de réflexion de l'ordre des ingénieurs du Gabon</h3>
+              ">The Reflection Committee of the Order of Engineers</h3>
           </div>
           <div class="row">
            
@@ -214,12 +286,13 @@ if(empty($_SESSION["ctri"]["id"])){
                 <table class="fl-table ">
                     <thead>
                     <tr>
-                        <th>Prénom & Nom</th>
+                        <th>First Name & Last Name</th>
                         <th>Email</th>
-                        <th>Pays</th>
-                        <th>Ville</th>
-                        <th>Ets</th>
-                        <th>Formation</th>
+                        <th>Country</th>
+                        <th>City</th>
+                        <th>Institution</th>
+                        <th>Training</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -238,13 +311,49 @@ if(empty($_SESSION["ctri"]["id"])){
                           data-secteur="<?=$value['secteur'] ?>"
                           data-promotion="<?=$value['promotion'] ?>"
                           data-tel="<?=$value['tel'] ?>"
-                          data-created_at="<?=dateFrancais($value['created_at']) ?>"
+                          data-created_at="<?=$value['created_at'] ?>"
                           ><?=$value['prenom'] ?> <?=$value['nom'] ?></a></td>
                         <td style="text-align:left;"><?=$value['email'] ?></td>
                         <td style="text-align:left;"><?=$value['pays'] ?></td>
                         <td style="text-align:left;"><?=$value['ville'] ?></td>
                         <td style="text-align:left;"><?=$value['etablissement'] ?></td>
                         <td style="text-align:left;"><?=$value['formation'] ?></td>
+                        <td style="text-align:center;">
+                        <a href="javascript:void(0);" class="btn btn-success voir" data-nom="<?=$value['prenom'] ?> <?=$value['nom'] ?>" 
+                          data-email="<?=$value['email'] ?>" 
+                          data-pays="<?=$value['pays'] ?>" 
+                          data-ville="<?=$value['ville'] ?>" 
+                          data-etablissement="<?=$value['etablissement'] ?>" 
+                          data-formation="<?=$value['formation'] ?>"
+                          data-diplome="<?=$value['diplome'] ?>"
+                          data-fonction="<?=$value['fonction'] ?>"
+                          data-secteur="<?=$value['secteur'] ?>"
+                          data-promotion="<?=$value['promotion'] ?>"
+                          data-tel="<?=$value['tel'] ?>"
+                          data-created_at="<?=$value['created_at'] ?>" onclick="showModal()"><i class="fa fa-eye"></i> View</a>
+                          
+                          <a onclick="showModalEdit()" href="javascript:void(0);" class="btn btn-primary edit"
+                          data-nom="<?=$value['prenom'] ?> <?=$value['nom'] ?>" 
+                          data-email="<?=$value['email'] ?>" 
+                          data-id="<?=$value['id'] ?>" 
+                          data-pays="<?=$value['pays'] ?>" 
+                          data-ville="<?=$value['ville'] ?>" 
+                          data-etablissement="<?=$value['etablissement'] ?>" 
+                          data-formation="<?=$value['formation'] ?>"
+                          data-diplome="<?=$value['diplome'] ?>"
+                          data-fonction="<?=$value['fonction'] ?>"
+                          data-secteur="<?=$value['secteur'] ?>"
+                          data-promotion="<?=$value['promotion'] ?>"
+                          data-tel="<?=$value['tel'] ?>"
+                          data-created_at="<?=$value['created_at'] ?>"
+                          data-toggle="modal" data-target="#editModal">
+                          <i class="fa fa-pencil-alt"></i> Edit
+                        </a>
+
+                        <a href="javascript:void(0);" class="btn btn-danger delete" data-id="<?= $value['id'] ?>">
+                            <i class="fa fa-trash"></i> Delete
+                        </a>
+                        </td>
                     </tr>
                     <?php } ?>
                     <?php } ?>
@@ -267,7 +376,7 @@ if(empty($_SESSION["ctri"]["id"])){
     <footer id="footer">
       <div class="container footer-bottom clearfix" style="padding-top:40px;">
         <div class="copyright">
-          &copy; Copyright <strong><span>Le comité de réflexion de l'ordre des ingénieurs du Gabon</span></strong>
+          &copy; Copyright <strong><span>The Reflection Committee of the Order of Engineers</span></strong>
         </div>
         <!-- <div class="credits">
           Designed by <a href="">Kikun-Digital</a>
@@ -297,13 +406,109 @@ if(empty($_SESSION["ctri"]["id"])){
     <script src="../../assets/vendor/php-email-form/validate.js"></script>
     <!-- Template Main JS File -->
     <script src="../../assets/js/main.js"></script>
+    <!-- jQuery et Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    
+    <script>
+        $(document).ready(function () {
+            $('.delete').on('click', function () {
+                let engineerId = $(this).data('id'); // Récupérer l'ID de l'ingénieur
+               
+                if (!engineerId) {
+                    alert("ID introuvable.");
+                    return;
+                }
+                
+                if (confirm("Voulez-vous vraiment supprimer cet ingénieur ? Cette action est irréversible !")) {
+                    axios.post('../../Connexion/delete.php', { id: engineerId })
+                        .then(function (response) {
+                            if (response.data.success) {
+                                alert(response.data.message);
+                                location.reload(); // Recharger la page après suppression
+                            } else {
+                                alert("Erreur : " + response.data.message);
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                            alert("Une erreur est survenue.");
+                        });
+                }
+            });
+        });
+    </script>
     <script>
         function showModal() {
         $('#myModal').modal('show');
         }
+
+        function showModalEdit() {
+        $('#editModal').modal('show');
+        }
+    </script>
+    <script>
+      $(document).ready(function() {
+        $('#editForm').submit(function(e) {
+            e.preventDefault(); // Empêcher le rechargement de la page
+
+            // Récupérer les données du formulaire
+            let formData = {
+                id: $('#id').val(),
+                nom: $('#name').val(),
+                email: $('#email').val(),
+                pays: $('#country').val(),
+                ville: $('#city').val(),
+                etablissement: $('#institution').val(),
+                formation: $('#training').val(),
+                diplome: $('#degree').val(),
+                fonction: $('#position').val(),
+                secteur: $('#sector').val(),
+                promotion: $('#promotion').val(),
+                tel: $('#phone').val(),
+                created_at: $('#date').val()
+            };
+
+            // Envoi des données avec Axios
+            axios.post('../../Connexion/update.php', formData)
+                .then(function(response) {
+                    if (response.data.success) {
+                        alert('Modification réussie !');
+                        location.reload(); // Rafraîchir la page après modification
+                    } else {
+                        alert('Erreur : ' + response.data.message);
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                    alert('Une erreur est survenue.');
+                });
+        });
+    });
+
+    </script>
+    <script>
+      $(document).ready(function() {
+        $('.edit').click(function() {
+            var modal = $('#editForm');
+
+            modal.find('#id').val($(this).data('id'));
+            modal.find('#name').val($(this).data('nom'));
+            modal.find('#email').val($(this).data('email'));
+            modal.find('#country').val($(this).data('pays'));
+            modal.find('#city').val($(this).data('ville'));
+            modal.find('#institution').val($(this).data('etablissement'));
+            modal.find('#training').val($(this).data('formation'));
+            modal.find('#degree').val($(this).data('diplome'));
+            modal.find('#position').val($(this).data('fonction'));
+            modal.find('#sector').val($(this).data('secteur'));
+            modal.find('#promotion').val($(this).data('promotion'));
+            modal.find('#phone').val($(this).data('tel'));
+            modal.find('#date').val($(this).data('created_at'));
+        });
+    });
+
     </script>
     <script>
       $(document).ready(function() {
@@ -322,7 +527,7 @@ if(empty($_SESSION["ctri"]["id"])){
           let secteur = objet.attr("data-secteur");
           let promotion = objet.attr("data-promotion");
           let tel = objet.attr("data-tel");
-         
+          
           $(".data-nom").text(nom);
           $(".data-pays").text(pays);
           $(".data-ville").text(ville);
