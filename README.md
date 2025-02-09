@@ -90,6 +90,18 @@ Ensure you have the following installed:
    ```bash
    kubectl get services
    ```
+![alt text](image-4.png)
+
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+![alt text](image-7.png)
+
+![alt text](image-8.png)
+
+![alt text](image-9.png)
+
 
    Access:
    - **PHP App**: `http://<K8s_IP>:<NodePort>`
@@ -101,6 +113,7 @@ Ensure you have the following installed:
 
 ### **1. Docker and Docker Compose**
 
+![alt text](image-2.png)
 The `docker-compose.yml` file defines the necessary services for the web application and database. It also automates the database migrations and populates the tables during startup.
 
 ### **2. Kubernetes YAML Files**
@@ -129,6 +142,13 @@ The `.gitlab-ci.yml` file is used to automate the Docker image build and deploym
 2. **Deploy** (optional):
    - Deploy the Docker image to a remote server (SSH access required) and run the application using Docker.
 
+   ![alt text](image-3.png)
+
+   ![alt text](image.png)
+
+   This is the picture in Docker Hub after automation and the update of the image
+
+   ![alt text](image-1.png)
 ---
 
 ##  **API Testing with Postman**
