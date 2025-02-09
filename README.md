@@ -2,7 +2,7 @@
 
 ## **Introduction**
 
-This project focuses on developing a web application that allows engineers to register for IT engineering projects. It integrates DevOps methodologies to ensure automation, scalability, and reliability. The project utilizes tools and best practices such as CI/CD, Docker, Kubernetes, and monitoring.
+This project aims to develop a web application that allows engineers to register for IT engineering projects while integrating DevOps methodologies. The focus is on automation, scalability, and reliability, leveraging tools and best practices such as CI/CD, Docker, Kubernetes, and monitoring.
 
 ### **Technology Stack**
 - **Backend**: PHP
@@ -116,6 +116,14 @@ Example Docker image: `dissivouloud/dsti-devops-project:latest`
    vagrant ssh
    ```
 
+![Vagrant Setup](image-18.png)
+
+![Provisioning Update](image-19.png)
+
+![Provisioning Results](image-20.png)
+
+![Inside the Virtual Machine](image-22.png)
+
 ---
 
 ## **API Testing with Postman**
@@ -127,6 +135,8 @@ This project uses **Postman** for testing CRUD operations.
 2. **Import API Collection**: Load the provided collection for testing endpoints.
 3. **Perform CRUD operations**: Create, read, update, and delete engineer records.
 
+![Postman API Test](image-11.png)
+
 ---
 
 ## **Monitoring and Observability**
@@ -134,6 +144,18 @@ This project uses **Postman** for testing CRUD operations.
 1. **Prometheus and Grafana**:
    - **Prometheus** collects application metrics.
    - **Grafana** visualizes CPU usage, memory usage, and system health.
+
+![Prometheus Metrics](image-15.png)
+
+![Grafana Dashboard](image-14.png)
+
+![Grafana Visualization](image-13.png)
+
+![Grafana Interface](image-16.png)
+
+![Alerts & Monitoring](image-12.png)
+
+![System Overview](image-17.png)
 
 2. **Alerts and Notifications**:
    - Configured alerts in Prometheus and Grafana notify of potential issues.
