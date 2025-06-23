@@ -1,4 +1,3 @@
-# .github/workflows/ci.yml
 name: CI
 
 on: [push, pull_request]
@@ -19,15 +18,25 @@ jobs:
           echo "Build directory created."
           touch build/test_file.txt
           echo "Test file in build directory created."
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: build/test_file.txt
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build  # important pour attendre "build"
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: build-artifact
           path: build/
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+
       - name: Check if file exists
         run: test -f build/test_file.txt
