@@ -1,22 +1,42 @@
-name: Create Test File
+name: CI
 
-on:
-  push:
-    branches:
-      - test
+on: [push, pull_request]
 
 jobs:
-  create_test_file:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Create test file and build directory
         run: |
           echo "Creating file..."
           echo "This is a test file." > test_file.txt
           echo "File created successfully."
-          mkdir build
+          mkdir -p build
           echo "Build directory created."
-          touch build/test1_file.txt
+          touch build/test_file.txt
           echo "Test file in build directory created."
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: build/test_file.txt
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build  # important pour attendre "build"
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: build/
+
+      - name: Check if file exists
+        run: test -f build/test_file.txt
