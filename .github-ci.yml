@@ -1,0 +1,10 @@
+create_file:
+  image: alpine
+  script:
+    - echo "Creating file..."
+    - echo "This is a test file." > test_file.txt
+    - echo "File created successfully."
+    - mkdir build
+    - echo "Build directory created."
+    - touch build/test_file.txt
+    - echo "Test file in build directory created." 
