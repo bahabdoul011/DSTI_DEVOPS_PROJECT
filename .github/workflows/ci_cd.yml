@@ -1,0 +1,22 @@
+name: Create Test File
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  create_test_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Create test file and build directory
+        run: |
+          echo "Creating file..."
+          echo "This is a test file." > test_file.txt
+          echo "File created successfully."
+          mkdir build
+          echo "Build directory created."
+          touch build/test1_file.txt
+          echo "Test file in build directory created."
