@@ -15,7 +15,7 @@ jobs:
           echo "Creating file..."
           echo "This is a test file." > test_file.txt
           echo "File created successfully."
-          mkdir -p build
+          mkdir build
           echo "Build directory created."
           touch build/test_file.txt
           echo "Test file in build directory created."
@@ -37,5 +37,5 @@ jobs:
         with:
           name: build-artifact
 
-      - name: Check if file exists
+      - name: Verify test file exists
         run: test -f build/test_file.txt
