@@ -20,3 +20,13 @@ jobs:
           echo "Build directory created."
           touch build/test1_file.txt
           echo "Test file in build directory created."
+
+  test_file:
+    runs-on: alpine
+    steps:
+      - name: Display test file
+        run: |
+          echo "Displaying test file..."
+          cat test_file.txt
+          echo "Test file displayed successfully."
+          ls -l build/
